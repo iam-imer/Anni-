@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pagina Version 1 - Anni"> 
+    
+    <!-- Google Fonts: Inter (Tipografía inspirada en Apple SF Pro) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    
+    <title>Anni - Hub Multimedia</title>
+
+    <style>
+        :root {
+            /* Sistema tipográfico nativo de Apple + Fallback Inter */
+            --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+            
+            --bg-color: #f7f6f3;
+            --text-color: #1c1c1e;
+            --secondary-color: #6e6e73;
+            --accent-color: #8b5e3e;
+            --white: #ffffff;
+            --hbo-dark: #0f0f12;
+            --hbo-card-bg: #18181c;
+            --border-radius: 24px;
+            --nav-height: 70px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-apple);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding-bottom: 120px;
+            letter-spacing: -0.01em; /* Espaciado fino característico de iOS */
+            -webkit-font-smoothing: antialiased; /* Suavizado de bordes tipo macOS */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img, video {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- SECCIONES ESTÁNDAR --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero__container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero__img {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            object-fit: cover;
+            will-change: transform;
+            z-index: 1;
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 80px;
+            max-width: 550px;
+            text-align: left;
+            z-index: 10;    
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 15px;
+            line-height: 1.05;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* GUADALAJARA */
+        #Guadalajara { padding: 0; }
+        #Guadalajara .hero__container { border-radius: 0; box-shadow: none; height: 100vh; }
+        .grid-three { display: flex; width: 100%; height: 100%; }
+        .grid-item { position: relative; flex: 1; height: 100%; overflow: hidden; transition: flex 0.7s ease; }
+        .grid-three:hover .grid-item { filter: brightness(0.7); }
+        .grid-three .grid-item:hover { flex: 2; filter: brightness(1); }
+        .grid-item__img { width: 100%; height: 100%; object-fit: cover; }
+        .grid-item__content {
+            position: absolute; bottom: 0; padding: 40px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: var(--white); z-index: 10;
+        }
+        .grid-item__content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- SECCIÓN MI ESPACIO: VIDEO Y HUB INTERACTIVO --- */
+        #mis-cosas {
+            padding: 20px;
+            min-height: 100vh;
+            background-color: var(--hbo-dark);
+            color: var(--white);
+            position: relative;
+        }
+
+        /* ESTADO 1: VISTA DE VIDEO PRINCIPAL */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 40px);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .video-wrapper.is-hidden {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 15, 18, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px;
+            z-index: 10;
+        }
+
+        .video-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .video-desc {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 500px;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .btn-open-hub {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--hbo-dark);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            letter-spacing: -0.01em;
+        }
+
+        .btn-open-hub:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ESTADO 2: HUB ESTILO HBO (DESPLEGABLE) */
+        .hbo-hub-container {
+            display: none;
+            opacity: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 10px;
+            transition: opacity 0.6s ease;
+        }
+
+        .hbo-hub-container.is-visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .hub-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .btn-back-video {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back-video:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .hbo-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .hbo-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        /* FILTROS Y CARRUSELES */
+        .hbo-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .hbo-tabs::-webkit-scrollbar { display: none; }
+
+        .hbo-tab {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .hbo-tab:hover, .hbo-tab.active {
+            background: var(--white);
+            color: var(--hbo-dark);
+            border-color: var(--white);
+        }
+
+        .hbo-row { margin-bottom: 40px; }
+
+        .hbo-row__title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hbo-row__slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .hbo-row__slider::-webkit-scrollbar { display: none; }
+
+        /* TARJETAS MULTIMEDIA */
+        .hbo-card {
+            flex: 0 0 230px;
+            height: 340px;
+            background-color: var(--hbo-card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hbo-card--wide {
+            flex: 0 0 310px;
+            height: 210px;
+        }
+
+        .hbo-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hbo-card__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hbo-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 15, 18, 0.95) 0%, rgba(15, 15, 18, 0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 18px;
+        }
+
+        .hbo-card__tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hbo-card__title {
+            font-size: 1.1rem;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .hbo-card__desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 400;
+        }
+
+        /* MODAL MULTIMEDIA DUAL */
+        .hbo-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .hbo-modal.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hbo-modal__content {
+            background: #18181c;
+            border-radius: 24px;
+            max-width: 650px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .hbo-modal.is-active .hbo-modal__content { transform: scale(1); }
+
+        .hbo-modal__media { width: 100%; height: 320px; background: #000; }
+        .hbo-modal__body { padding: 25px; }
+
+        .hbo-modal__close {
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .hbo-modal__title { font-size: 1.5rem; margin-bottom: 8px; font-weight: 600; letter-spacing: -0.02em; }
+        .hbo-modal__text { font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); line-height: 1.5; margin-bottom: 20px; font-weight: 400; }
+
+        /* FOOTER Y BOTONERA iOS */
+        .footer { text-align: center; padding: 40px 20px; color: var(--secondary-color); font-size: 0.9rem; font-weight: 400; }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: min(90%, 600px);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex; align-items: center; justify-content: center;
+            height: 100%; padding: 0 20px; border-radius: 18px;
+            color: var(--secondary-color); font-size: 0.9rem; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active { background-color: var(--accent-color); color: var(--white); }
+
+        @media (max-width: 767px) {
+            .hero-content { left: 30px; right: 30px; text-align: center; }
+            .video-overlay { padding: 30px; }
+            .hbo-card { flex: 0 0 180px; height: 260px; }
+            .hbo-card--wide { flex: 0 0 250px; height: 170px; }
+        }
+    </style>
+</head>
+<body> 
+
+    <!-- SECCIÓN 1: INICIO -->
+    <section class="hero" id="home">
+        <div class="hero__container">
+            <img src="imagenes/20240915_115021_Original.jpg" alt="Foto de Anni" class="hero__img">
+            <div class="hero__overlay"></div>
+            <div class="hero-content">
+                <h1>Hola, Anni</h1>
+                <p>Creamos un espacio especial para ti, donde podrás explorar todo lo que te encanta del idioma español.</p>
+            </div>
+        </div> 
+    </section>
+
+       <!-- SECCIÓN 2: MI ESPACIO (CON VIDEO Y DESPLIEGUE DEL HUB) -->
+    <section id="mis-cosas">
+        
+        <!-- VISTA DE VIDEO INICIAL -->
+        <div class="video-wrapper" id="videoContainer">
+            <video class="bg-video" autoplay loop muted playsinline poster="videos/0913.mp4"> 
+                <source src="videos/0913.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="video-overlay">
+                <h2 class="video-title">Mi Espacio Multimedia</h2>
+                <p class="video-desc">Una experiencia interactiva con libros, cine y fotos de México para conectar con el español.</p>
+                <button class="btn-open-hub" onclick="showHub()">
+                    <span>Explorar Biblioteca</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTENIDO DEL HUB ESTILO HBO (INICIALMENTE OCULTO) -->
+        <div class="hbo-hub-container" id="hboHub">
+            
+            <div class="hub-top-bar">
+                <div class="hbo-header">
+                    <h2>Biblioteca & Hub Cultural</h2>
+                    <p>Colección especial de películas, literatura y fotografía.</p>
+                </div>
+                <button class="btn-back-video" onclick="showVideo()">
+                    &larr; Volver al Video
+                </button>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="hbo-tabs">
+                <button class="hbo-tab active" onclick="filterCategory('all')">Todo</button>
+                <button class="hbo-tab" onclick="filterCategory('cine')">Películas</button>
+                <button class="hbo-tab" onclick="filterCategory('libros')">Libros</button>
+                <button class="hbo-tab" onclick="filterCategory('fotos')">Fotografía</button>
+            </div>
+
+            <!-- FILA 1: PELÍCULAS -->
+            <div class="hbo-row" data-category="cine">
+                <div class="hbo-row__title">Películas & Documentales</div>
+                <div class="hbo-row__slider">
+                    <!-- Ejemplo con Video Embed (YouTube / Cloudflare) -->
+                    <div class="hbo-card hbo-card--wide" onclick="openModal('Macario (1960)', 'Cine Clásico', 'Un clásico del cine mexicano basado en la obra de B. Traven.', 'https://www.youtube.com/embed/ZSI2VLw32iA', 'youtube')">
+                        <img src="imagenes/20240727_092831_Original.jpg" alt="Macario" class="hbo-card__img">
+                        <div class="hbo-card__overlay">
+                            <span class="hbo-card__tag">Película</span>
+                            <h3 class="hbo-card__title">Macario</h3>
+                            <p class="hbo-card__desc">Realismo mágico mexicano</p>
+                        </div>
+                    </div>
+                    <!-- Ejemplo con Video Local MP4 -->
+                    <div class="hbo-card hbo-card--wide" onclick="openModal('Roma', 'Cine Moderno', 'Dirigida por Alfonso Cuarón, retrata la cotidianidad de la Ciudad de México.', 'videos/trailer-roma.mp4', 'video')">
+                        <img src="imagenes/20240728_213813_Original.jpg" alt="Roma" class="hbo-card__img">
+                        <div class="hbo-card__overlay">
+                            <span class="hbo-card__tag">Película</span>
+                            <h3 class="hbo-card__title">Roma</h3>
+                            <p class="hbo-card__desc">Obra maestra del cine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA 2: LIBROS -->
+            <div class="hbo-row" data-category="libros">
+                <div class="hbo-row__title">Libros & Literatura</div>
+                <div class="hbo-row__slider">
+                    <div class="hbo-card" onclick="openModal('Pedro Páramo', 'Juan Rulfo', 'Novela fundamental sobre Comala, un pueblo lleno de susurros y ecos del pasado.', 'imagenes/20240915_115021_Original.jpg', 'image')">
+                        <img src="imagenes/20240915_115021_Original.jpg" alt="Pedro Páramo" class="hbo-card__img">
+                        <div class="hbo-card__overlay">
+                            <span class="hbo-card__tag">Novela</span>
+                            <h3 class="hbo-card__title">Pedro Páramo</h3>
+                            <p class="hbo-card__desc">Juan Rulfo</p>
+                        </div>
+                    </div>
+                    <div class="hbo-card" onclick="openModal('Como Agua para Chocolate', 'Laura Esquivel', 'Una novela donde la gastronomía y las emociones se mezclan en una historia inolvidable.', 'imagenes/20240727_092831_Original.jpg', 'image')">
+                        <img src="imagenes/20240727_092831_Original.jpg" alt="Como Agua para Chocolate" class="hbo-card__img">
+                        <div class="hbo-card__overlay">
+                            <span class="hbo-card__tag">Novela</span>
+                            <h3 class="hbo-card__title">Como Agua para Chocolate</h3>
+                            <p class="hbo-card__desc">Laura Esquivel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILA 3: FOTOGRAFÍA -->
+            <div class="hbo-row" data-category="fotos">
+                <div class="hbo-row__title">Fotografía de México</div>
+                <div class="hbo-row__slider">
+                    <div class="hbo-card hbo-card--wide" onclick="openModal('Arquitectura Colonial', 'Guadalajara', 'Captura de las cúpulas e iluminación nocturna en el centro histórico de Guadalajara.', 'imagenes/20240819_213459_Original.jpg', 'image')">
+                        <img src="imagenes/20240819_213459_Original.jpg" alt="Foto México" class="hbo-card__img">
+                        <div class="hbo-card__overlay">
+                            <span class="hbo-card__tag">Fotografía</span>
+                            <h3 class="hbo-card__title">Centro Histórico</h3>
+                            <p class="hbo-card__desc">Guadalajara, Jalisco</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- VENTANA EMERGENTE / MODAL MULTIMEDIA DUAL -->
+    <div class="hbo-modal" id="hboModal">
+        <div class="hbo-modal__content">
+            <button class="hbo-modal__close" onclick="closeModal()">&times;</button>
+            <div class="hbo-modal__media" id="modalMediaContainer">
+                <!-- La imagen o el reproductor de video se insertarán dinámicamente -->
+            </div>
+            <div class="hbo-modal__body">
+                <h3 class="hbo-modal__title" id="modalTitle">Título</h3>
+                <p class="hbo-modal__text" id="modalText">Descripción.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SECCIÓN 3: GUADALAJARA -->
+    <section class="hero" id="Guadalajara">
+        <div class="hero__container">
+            <div class="grid-three">
+                <div class="grid-item">
+                    <img src="imagenes/20240727_092831_Original.jpg" alt="Guadalajara 1" class="grid-item__img">
+                    <div class="grid-item__content">
+                        <h2>Guadalajara</h2>
+                        <p>Descubre su belleza y tradición.</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="imagenes/20240915_112857_Original.jpg" alt="Guadalajara 2" class="grid-item__img">
+                    <div class="grid-item__content">
+                        <h2>Cultura & Arte</h2>
+                        <p>Arquitectura e historia viva.</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="imagenes/IMG_9540.jpg" alt="Guadalajara 3" class="grid-item__img">
+                    <div class="grid-item__content">
+                        <h2>Tradición</h2>
+                        <p>La magia de sus rincones.</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+ 
+    <!-- SECCIÓN 4: PALABRAS BONITAS -->
+    <section class="hero" id="palabras-bonitas">
+        <div class="hero__container">
+            <img src="imagenes/IMG_1892.jpg" alt="Palabras Bonitas" class="hero__img">
+            <div class="hero__overlay"></div>
+            <div class="hero-content">
+                <h1>Palabras Bonitas</h1>
+                <p>Descubre y comparte las palabras más hermosas del español.</p>
+            </div>
+        </div> 
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Anni. All Rights Reserved.</p>
+    </footer>
+
+    <!-- BOTONERA IOS -->
+    <nav class="bottom-nav">
+        <a href="#home" class="nav-item active"><span class="nav-label">Inicio</span></a>
+        <a href="#mis-cosas" class="nav-item"><span class="nav-label">Mi Espacio</span></a>
+        <a href="#Guadalajara" class="nav-item"><span class="nav-label">Guadalajara</span></a>
+        <a href="#palabras-bonitas" class="nav-item"><span class="nav-label">Palabras Bonitas</span></a>
+    </nav>
+
+    <script>
+        // CAMBIO ENTRE VIDEO DE PORTADA Y HUB MULTIMEDIA
+        function showHub() {
+            const videoContainer = document.getElementById('videoContainer');
+            const hboHub = document.getElementById('hboHub');
+
+            videoContainer.classList.add('is-hidden');
+            hboHub.classList.add('is-visible');
+        }
+
+        function showVideo() {
+            const videoContainer = document.getElementById('videoContainer');
+            const hboHub = document.getElementById('hboHub');
+
+            hboHub.classList.remove('is-visible');
+            videoContainer.classList.remove('is-hidden');
+        }
+
+        // LÓGICA DEL MODAL MULTIMEDIA (IMÁGENES, VIDEOS MP4 Y EMBEDS YOUTUBE/CLOUDFLARE)
+        function openModal(title, category, text, mediaUrl, mediaType = 'image') {
+            const container = document.getElementById('modalMediaContainer');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalText').textContent = text;
+
+            container.innerHTML = '';
+
+            if (mediaType === 'video') {
+                container.innerHTML = `
+                    <video controls autoplay width="100%" height="100%" style="object-fit: cover;">
+                        <source src="${mediaUrl}" type="video/mp4">
+                    </video>
+                `;
+            } else if (mediaType === 'youtube') {
+                container.innerHTML = `
+                    <iframe width="100%" height="100%" src="${mediaUrl}?autoplay=1" 
+                        title="Reproductor de Video" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen style="border:none;">
+                    </iframe>
+                `;
+            } else {
+                container.innerHTML = `<img src="${mediaUrl}" alt="${title}" style="width:100%; height:100%; object-fit:cover;">`;
+            }
+
+            document.getElementById('hboModal').classList.add('is-active');
+        }
+
+        function closeModal() {
+            const container = document.getElementById('modalMediaContainer');
+            document.getElementById('hboModal').classList.remove('is-active');
+            
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 400);
+        }
+
+        // FILTROS DE CATEGORÍAS
+        function filterCategory(category) {
+            const tabs = document.querySelectorAll('.hbo-tab');
+            const rows = document.querySelectorAll('.hbo-row');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            rows.forEach(row => {
+                if (category === 'all' || row.dataset.category === category) {
+                    row.style.display = 'block';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // NAVEGACIÓN Y SCROLL
+        const navLinks = document.querySelectorAll('.bottom-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'instant' });
+                }
+            });
+        });
+
+        // PARALLAX Y ACTUALIZACIÓN DE MENÚ
+        let isTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    actualizarMenuScroll();
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        });
+
+        function actualizarMenuScroll() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY;
+
+            let currentSectionId = 'home';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollPosition >= (sectionTop - sectionHeight / 3)) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${currentSectionId}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
