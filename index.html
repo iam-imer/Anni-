@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anni</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500&display=swap" rel="stylesheet">
@@ -19,8 +20,6 @@
             --hbo-card-bg: #18181c;
             --border-radius: 24px;
             --nav-height: 70px;
-
-            /* Variables Binder Universitario */
             --page-bg: #dfe3e6;
             --surface-0: #dfe3e6;
             --surface-2: #fbfaf6;
@@ -31,11 +30,7 @@
             --text-accent: #185FA5;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-apple);
@@ -47,15 +42,8 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        img, video {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        img, video { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
 
         /* 1. HERO / INICIO */
         .hero {
@@ -72,7 +60,7 @@
             height: calc(100vh - 40px);
             overflow: hidden;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
             display: flex;
             align-items: center;
         }
@@ -88,7 +76,7 @@
         .hero__overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0,0,0,.35);
         }
 
         .hero-content {
@@ -102,17 +90,17 @@
         .hero-content h1 {
             font-size: clamp(2.6rem, 5.5vw, 4.5rem);
             font-weight: 800;
-            letter-spacing: -0.04em;
+            letter-spacing: -.04em;
             line-height: 1.05;
             margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            text-shadow: 0 4px 20px rgba(0,0,0,.35);
         }
 
         .hero-content p {
             font-size: 1.2rem;
             font-weight: 500;
-            letter-spacing: -0.015em;
-            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: -.015em;
+            color: rgba(255,255,255,.95);
         }
 
         /* 2. MI ESPACIO */
@@ -128,28 +116,20 @@
             height: calc(100vh - 40px);
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            transition: opacity 0.6s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,.12);
+            transition: opacity .6s ease;
         }
 
-        .video-wrapper.is-hidden {
-            display: none;
-            opacity: 0;
-        }
-
-        .bg-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .video-wrapper.is-hidden { display: none; opacity: 0; }
+        .bg-video { width: 100%; height: 100%; object-fit: cover; }
 
         .video-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to top,
-                rgba(15, 15, 18, 0.85) 0%,
-                rgba(0, 0, 0, 0.2) 60%
+                rgba(15,15,18,.85) 0%,
+                rgba(0,0,0,.2) 60%
             );
             display: flex;
             flex-direction: column;
@@ -161,13 +141,13 @@
         .video-title {
             font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
-            letter-spacing: -0.03em;
+            letter-spacing: -.03em;
             margin-bottom: 12px;
         }
 
         .video-desc {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,.85);
             max-width: 500px;
             margin-bottom: 25px;
         }
@@ -181,27 +161,22 @@
             font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform .3s ease;
         }
 
-        .btn-open-hub:hover {
-            transform: scale(1.05);
-        }
+        .btn-open-hub:hover { transform: scale(1.05); }
 
-        /* HUB MULTIMEDIA ESTILO HBO */
+        /* ESTILOS BASE DE BIBLIOTECA */
         .hbo-hub-container {
             display: none;
             opacity: 0;
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px 10px;
-            transition: opacity 0.6s ease;
+            transition: opacity .6s ease;
         }
 
-        .hbo-hub-container.is-visible {
-            display: block;
-            opacity: 1;
-        }
+        .hbo-hub-container.is-visible { display: block; opacity: 1; }
 
         .hub-top-bar {
             display: flex;
@@ -213,32 +188,26 @@
         .hbo-header h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            letter-spacing: -0.03em;
+            letter-spacing: -.03em;
         }
 
-        .hbo-header p {
-            color: var(--secondary-color);
-        }
+        .hbo-header p { color: var(--secondary-color); }
 
         .btn-back-video {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0,0,0,.05);
             color: var(--text-color);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0,0,0,.1);
             padding: 10px 20px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
         }
 
-        .hbo-tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 35px;
-        }
+        .hbo-tabs { display: flex; gap: 12px; margin-bottom: 35px; }
 
         .hbo-tab {
-            background: rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: rgba(0,0,0,.04);
+            border: 1px solid rgba(0,0,0,.08);
             color: var(--secondary-color);
             padding: 10px 20px;
             border-radius: 30px;
@@ -251,9 +220,7 @@
             color: var(--white);
         }
 
-        .hbo-row {
-            margin-bottom: 40px;
-        }
+        .hbo-row { margin-bottom: 40px; }
 
         .hbo-row__title {
             font-size: 1.2rem;
@@ -276,32 +243,17 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform .3s ease;
         }
 
-        .hbo-card--wide {
-            flex: 0 0 310px;
-            height: 210px;
-        }
-
-        .hbo-card:hover {
-            transform: translateY(-6px);
-        }
-
-        .hbo-card__img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .hbo-card--wide { flex: 0 0 310px; height: 210px; }
+        .hbo-card:hover { transform: translateY(-6px); }
+        .hbo-card__img { width: 100%; height: 100%; object-fit: cover; }
 
         .hbo-card__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(15, 15, 18, 0.95),
-                transparent
-            );
+            background: linear-gradient(to top, rgba(15,15,18,.95), transparent);
             padding: 18px;
             display: flex;
             flex-direction: column;
@@ -310,21 +262,16 @@
         }
 
         .hbo-card__tag {
-            font-size: 0.7rem;
+            font-size: .7rem;
             font-weight: 800;
             color: var(--accent-color);
             text-transform: uppercase;
         }
 
-        .hbo-card__title {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
+        .hbo-card__title { font-size: 1.1rem; font-weight: 600; }
 
         /* 3. GUADALAJARA */
-        #Guadalajara {
-            padding: 0;
-        }
+        #Guadalajara { padding: 0; }
 
         #Guadalajara .hero__container {
             border-radius: 0;
@@ -332,48 +279,26 @@
             height: 100vh;
         }
 
-        .grid-three {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
+        .grid-three { display: flex; width: 100%; height: 100%; }
 
         .grid-item {
             position: relative;
             flex: 1;
             height: 100%;
             overflow: hidden;
-            transition: flex 0.7s ease;
+            transition: flex .7s ease;
         }
 
-        .grid-three:hover .grid-item {
-            filter: brightness(0.7);
-        }
-
-        .grid-three .grid-item:hover {
-            flex: 2;
-            filter: brightness(1);
-        }
-
-        .grid-item__img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .grid-item__img--zoom {
-            transform: scale(1.2);
-        }
+        .grid-three:hover .grid-item { filter: brightness(.7); }
+        .grid-three .grid-item:hover { flex: 2; filter: brightness(1); }
+        .grid-item__img { width: 100%; height: 100%; object-fit: cover; }
+        .grid-item__img--zoom { transform: scale(1.2); }
 
         .grid-item__content {
             position: absolute;
             bottom: 0;
             padding: 40px 30px;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.85),
-                transparent
-            );
+            background: linear-gradient(to top, rgba(0,0,0,.85), transparent);
             color: var(--white);
             z-index: 10;
         }
@@ -381,14 +306,14 @@
         .grid-item__content h2 {
             font-size: 2rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -.02em;
         }
 
-        /* MODAL MULTIMEDIA */
+        /* ESTILOS DEL MODAL ANTERIOR */
         .hbo-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,.85);
             backdrop-filter: blur(20px);
             z-index: 3000;
             display: flex;
@@ -396,13 +321,10 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity .3s ease;
         }
 
-        .hbo-modal.is-active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .hbo-modal.is-active { opacity: 1; pointer-events: auto; }
 
         .hbo-modal__content {
             background: #18181c;
@@ -414,15 +336,8 @@
             color: var(--white);
         }
 
-        .hbo-modal__media {
-            width: 100%;
-            height: 320px;
-            background: #000;
-        }
-
-        .hbo-modal__body {
-            padding: 25px;
-        }
+        .hbo-modal__media { width: 100%; height: 320px; background: #000; }
+        .hbo-modal__body { padding: 25px; }
 
         .hbo-modal__close {
             position: absolute;
@@ -431,13 +346,13 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0,0,0,.6);
             color: #fff;
             border: none;
             cursor: pointer;
         }
 
-        /* 4. PALABRAS BONITAS - PANTALLA COMPLETA Y BINDER 3D */
+        /* 4. PALABRAS BONITAS */
         .full-page-section {
             position: fixed;
             inset: 0;
@@ -448,22 +363,19 @@
             overflow-y: auto;
             display: none;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity .4s ease;
         }
 
-        .full-page-section.is-active {
-            display: block;
-            opacity: 1;
-        }
+        .full-page-section.is-active { display: block; opacity: 1; }
 
         .full-page-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0,0,0,.08);
             position: sticky;
             top: 0;
             z-index: 10;
@@ -480,21 +392,18 @@
             overflow: hidden;
         }
 
-        .book-header-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
+        .book-header-title { font-weight: 700; font-size: 1.1rem; }
 
         .btn-back {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(0,0,0,.05);
+            border: 1px solid rgba(0,0,0,.1);
             padding: 6px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
         }
 
-        /* ESTILOS DEL CARPETERO / FOLDER UNIVERSITARIO */
+        /* CARPETA UNIVERSITARIA */
         .wrap {
             min-height: 80vh;
             padding: 2rem 0;
@@ -516,9 +425,7 @@
             transition: transform .7s cubic-bezier(.6,.05,.2,1);
         }
 
-        .stage.open {
-            transform: translateX(calc(var(--W)/2));
-        }
+        .stage.open { transform: translateX(calc(var(--W)/2)); }
 
         .leaf {
             position: absolute;
@@ -528,9 +435,7 @@
             transition: transform .8s cubic-bezier(.5,.05,.2,1);
         }
 
-        .leaf.f {
-            transform: rotateY(-180deg);
-        }
+        .leaf.f { transform: rotateY(-180deg); }
 
         .face {
             position: absolute;
@@ -540,11 +445,8 @@
             overflow: hidden;
         }
 
-        .bk {
-            transform: rotateY(180deg);
-        }
+        .bk { transform: rotateY(180deg); }
 
-        /* Hojas de papel */
         .pg {
             border: .5px solid var(--border-strong);
             border-radius: 1px 6px 6px 1px;
@@ -590,11 +492,7 @@
             top: 0;
             bottom: 0;
             width: 8cqi;
-            background: linear-gradient(
-                90deg,
-                rgba(0,0,0,.14),
-                transparent
-            );
+            background: linear-gradient(90deg, rgba(0,0,0,.14), transparent);
         }
 
         .bk.pp {
@@ -606,11 +504,7 @@
         .bk.pp:after {
             left: auto;
             right: 0;
-            background: linear-gradient(
-                270deg,
-                rgba(0,0,0,.14),
-                transparent
-            );
+            background: linear-gradient(270deg, rgba(0,0,0,.14), transparent);
         }
 
         .pg h3 {
@@ -621,13 +515,8 @@
             margin: 0 0 3cqi;
         }
 
-        .pg p, .pg ul {
-            margin: 0;
-        }
-
-        .pg ul {
-            padding-left: 5cqi;
-        }
+        .pg p, .pg ul { margin: 0; }
+        .pg ul { padding-left: 5cqi; }
 
         .ring {
             border: .6cqi solid #D85A30;
@@ -635,7 +524,6 @@
             padding: 0 1.5cqi;
         }
 
-        /* Pasta y tapas */
         .cover, .base, .inner {
             position: absolute;
             top: -3cqi;
@@ -655,9 +543,7 @@
             -webkit-backface-visibility: hidden;
         }
 
-        .base {
-            z-index: 0;
-        }
+        .base { z-index: 0; }
 
         .bd {
             position: relative;
@@ -702,7 +588,6 @@
             bottom: 6cqi;
         }
 
-        /* Aros metálicos */
         .hw {
             position: absolute;
             top: 0;
@@ -714,19 +599,10 @@
             transition: opacity .4s;
         }
 
-        .stage.open .hw {
-            opacity: 1;
-        }
+        .stage.open .hw { opacity: 1; }
+        .hw.b { z-index: 1; }
+        .hw.t { z-index: 40; }
 
-        .hw.b {
-            z-index: 1;
-        }
-
-        .hw.t {
-            z-index: 40;
-        }
-
-        /* Pestañas de índice */
         .tabs {
             position: absolute;
             left: calc(100% - 1cqi);
@@ -756,16 +632,13 @@
             transition: width .2s;
         }
 
-        .tab:hover, .tab[aria-current=true] {
-            width: 12cqi;
-        }
+        .tab:hover, .tab[aria-current=true] { width: 12cqi; }
 
         .tab:focus-visible {
             outline: 2px solid var(--text-accent);
             outline-offset: 2px;
         }
 
-        /* Botones de control */
         .row {
             display: flex;
             gap: 12px;
@@ -784,42 +657,32 @@
             cursor: pointer;
         }
 
-        .row button:hover {
-            background: var(--border);
-        }
+        .row button:hover { background: var(--border); }
 
         .row button:focus-visible {
             outline: 2px solid var(--text-accent);
             outline-offset: 2px;
         }
 
-        #ps {
-            min-width: 9ch;
-            text-align: center;
-        }
+        #ps { min-width: 9ch; text-align: center; }
 
         @media (max-width: 520px) {
-            .stage {
-                --W: min(38vw, calc((100vh - 320px) * .75));
-            }
+            .stage { --W: min(38vw, calc((100vh - 320px) * .75)); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .leaf, .stage, .hw {
-                transition: none;
-            }
+            .leaf, .stage, .hw { transition: none; }
         }
 
-        /* FOOTER */
+        /* FOOTER Y NAVEGACIÓN */
         .footer {
             width: 100%;
             text-align: center;
             padding: 30px 20px;
             color: var(--secondary-color);
-            font-size: 0.85rem;
+            font-size: .85rem;
         }
 
-        /* NAVEGACIÓN TIPO iOS */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
@@ -830,10 +693,10 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,.85);
             backdrop-filter: blur(20px);
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
             z-index: 1000;
             padding: 8px;
         }
@@ -844,10 +707,10 @@
             display: flex;
             align-items: center;
             border-radius: 18px;
-            font-size: 0.9rem;
+            font-size: .9rem;
             font-weight: 600;
             color: var(--secondary-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color .3s ease, color .3s ease;
         }
 
         .nav-item.active {
@@ -856,27 +719,13 @@
         }
 
         @media (max-width: 767px) {
-            .hero-content {
-                left: 30px;
-                right: 30px;
-                text-align: center;
-            }
-
-            .hbo-card {
-                flex: 0 0 180px;
-                height: 260px;
-            }
-
-            .hbo-card--wide {
-                flex: 0 0 250px;
-                height: 170px;
-            }
+            .hero-content { left: 30px; right: 30px; text-align: center; }
+            .hbo-card { flex: 0 0 180px; height: 260px; }
+            .hbo-card--wide { flex: 0 0 250px; height: 170px; }
         }
 
-        /* ===== MODO JAPÓN ===== */
-        .hero-content {
-            transition: opacity .3s ease;
-        }
+        /* MODO JAPÓN */
+        .hero-content { transition: opacity .3s ease; }
 
         .japan-count {
             margin-top: 14px;
@@ -884,11 +733,8 @@
             color: #ffd6df;
         }
 
-        .hero-content .btn-open-hub {
-            margin-top: 20px;
-        }
+        .hero-content .btn-open-hub { margin-top: 20px; }
 
-        /* Botón Modo Japón (tecla física) */
         .btn-japan {
             position: relative;
             display: inline-flex;
@@ -897,12 +743,7 @@
             margin-top: 20px;
             margin-bottom: 8px;
             padding: 8px 10px 8px 18px;
-            background: linear-gradient(
-                180deg,
-                #e0284c 0%,
-                #bc002d 55%,
-                #a30027 100%
-            );
+            background: linear-gradient(180deg, #e0284c 0%, #bc002d 55%, #a30027 100%);
             color: var(--white);
             border: 0;
             border-radius: 12px;
@@ -926,9 +767,7 @@
                 filter .2s ease;
         }
 
-        .btn-japan:hover {
-            filter: brightness(1.07);
-        }
+        .btn-japan:hover { filter: brightness(1.07); }
 
         .btn-japan:active {
             transform: translateY(5px);
@@ -945,14 +784,8 @@
             outline-offset: 5px;
         }
 
-        .btn-japan__icon {
-            display: inline-flex;
-        }
-
-        .btn-japan__icon svg {
-            width: 20px;
-            height: 20px;
-        }
+        .btn-japan__icon { display: inline-flex; }
+        .btn-japan__icon svg { width: 20px; height: 20px; }
 
         .btn-japan__kanji {
             display: grid;
@@ -969,9 +802,8 @@
             box-shadow: inset 0 -2px 3px rgba(0,0,0,.12);
         }
 
-        /* Activo: la tecla queda hundida y en blanco */
         .btn-japan[aria-pressed="true"] {
-            background: linear-gradient(180deg, #ffffff 0%, #f1ede8 100%);
+            background: linear-gradient(180deg, #fff 0%, #f1ede8 100%);
             color: #bc002d;
             text-shadow: none;
             transform: translateY(5px);
@@ -1001,9 +833,7 @@
             transition: opacity 1s ease;
         }
 
-        #home.japan-mode .hero__overlay::after {
-            opacity: 1;
-        }
+        #home.japan-mode .hero__overlay::after { opacity: 1; }
 
         #sakura {
             position: absolute;
@@ -1014,7 +844,7 @@
             pointer-events: none;
         }
 
-        /* Boarding pass */
+        /* PASE DE ABORDAR */
         .pass-wrap {
             position: absolute;
             right: 20px;
@@ -1042,9 +872,7 @@
             transition: transform .8s cubic-bezier(.5,.05,.2,1);
         }
 
-        .pass.is-flipped {
-            transform: rotateY(180deg);
-        }
+        .pass.is-flipped { transform: rotateY(180deg); }
 
         .pass:focus-visible {
             outline: 2px solid var(--white);
@@ -1084,9 +912,7 @@
             color: #fff;
         }
 
-        .pass__back::before {
-            background: #7a1f34;
-        }
+        .pass__back::before { background: #7a1f34; }
 
         .pass__top {
             display: flex;
@@ -1107,10 +933,7 @@
             letter-spacing: -.03em;
         }
 
-        .pass__route span {
-            display: inline-flex;
-            color: #bc002d;
-        }
+        .pass__route span { display: inline-flex; color: #bc002d; }
 
         .pass__route span svg {
             width: 1.6rem;
@@ -1125,11 +948,7 @@
             color: #5b6672;
         }
 
-        .pass__meta b {
-            display: block;
-            font-size: .95rem;
-            color: #1f2a37;
-        }
+        .pass__meta b { display: block; font-size: .95rem; color: #1f2a37; }
 
         .pass__msg {
             font-family: 'Caveat', cursive;
@@ -1137,16 +956,10 @@
             line-height: 1.25;
         }
 
-        .pass__hint {
-            font-size: .65rem;
-            opacity: .7;
-            text-align: right;
-        }
+        .pass__hint { font-size: .65rem; opacity: .7; text-align: right; }
 
         @media (max-width: 767px) {
-            #home .hero-content {
-                align-self: flex-start;
-            }
+            #home .hero-content { align-self: flex-start; }
 
             .pass-wrap {
                 right: auto;
@@ -1156,9 +969,7 @@
                 transform: translateX(-50%) translateY(20px);
             }
 
-            #home.japan-mode .pass-wrap {
-                transform: translateX(-50%);
-            }
+            #home.japan-mode .pass-wrap { transform: translateX(-50%); }
 
             .japan-sun {
                 width: 34vmin;
@@ -1169,20 +980,12 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .pass,
-            .japan-sun,
-            .pass-wrap,
-            .widgets,
-            #home.japan-mode .widgets {
-                transition: none;
-            }
-
-            .btn-japan {
-                transition: none;
-            }
+            .pass, .japan-sun, .pass-wrap,
+            .widgets, #home.japan-mode .widgets { transition: none; }
+            .btn-japan { transition: none; }
         }
 
-        /* ===== WIDGETS CON ENLACE EXTERNO ===== */
+        /* WIDGETS */
         .widgets {
             position: absolute;
             left: 50%;
@@ -1240,37 +1043,14 @@
             outline-offset: 3px;
         }
 
-        .widget__icon {
-            display: inline-flex;
-        }
-
-        .widget__icon svg {
-            width: 26px;
-            height: 26px;
-        }
-
-        .widget__title {
-            display: block;
-            font-weight: 700;
-            font-size: .95rem;
-        }
-
-        .widget__sub {
-            display: block;
-            font-size: .75rem;
-            opacity: .85;
-        }
-
-        .widget__arrow {
-            display: none;
-        }
+        .widget__icon { display: inline-flex; }
+        .widget__icon svg { width: 26px; height: 26px; }
+        .widget__title { display: block; font-weight: 700; font-size: .95rem; }
+        .widget__sub { display: block; font-size: .75rem; opacity: .85; }
+        .widget__arrow { display: none; }
 
         @media (max-width: 767px) {
-            .widgets {
-                top: 16px;
-                width: calc(100% - 32px);
-                gap: 8px;
-            }
+            .widgets { top: 16px; width: calc(100% - 32px); gap: 8px; }
 
             .widget {
                 min-width: 0;
@@ -1282,25 +1062,13 @@
                 text-align: center;
             }
 
-            .widget__sub,
-            .widget__arrow {
-                display: none;
-            }
-
-            .widget__title {
-                font-size: .8rem;
-            }
-
-            #home .hero-content {
-                margin-top: 110px;
-            }
-
-            .japan-sun {
-                top: 16%;
-            }
+            .widget__sub, .widget__arrow { display: none; }
+            .widget__title { font-size: .8rem; }
+            #home .hero-content { margin-top: 110px; }
+            .japan-sun { top: 16%; }
         }
 
-        /* JAPAN VERSION — tecla física de los años 2000 */
+        /* JAPAN VERSION — BASE DE TECLA FÍSICA */
         .btn-japan {
             position: relative;
             isolation: isolate;
@@ -1316,27 +1084,22 @@
             -webkit-appearance: none;
             border: 1px solid #870020;
             border-radius: 9px;
-            background: linear-gradient(
-                180deg,
-                #e0284c 0%,
-                #bc002d 55%,
-                #a30027 100%
-            );
+            background: linear-gradient(180deg, #e0284c 0%, #bc002d 55%, #a30027 100%);
             color: var(--white);
             font: 700 1rem var(--font-apple);
             letter-spacing: .01em;
-            text-shadow: 0 -1px 1px rgba(0, 0, 0, .35);
+            text-shadow: 0 -1px 1px rgba(0,0,0,.35);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, .55),
-                inset 2px 0 2px rgba(255, 255, 255, .14),
-                inset -2px 0 3px rgba(0, 0, 0, .16),
-                inset 0 -4px 5px rgba(0, 0, 0, .22),
+                inset 0 1px 0 rgba(255,255,255,.55),
+                inset 2px 0 2px rgba(255,255,255,.14),
+                inset -2px 0 3px rgba(0,0,0,.16),
+                inset 0 -4px 5px rgba(0,0,0,.22),
                 0 1px 0 #a30027,
                 0 3px 0 #870020,
                 0 7px 0 #6a0018,
                 0 8px 0 #450010,
-                0 10px 5px rgba(0, 0, 0, .30),
-                0 16px 22px rgba(0, 0, 0, .25);
+                0 10px 5px rgba(0,0,0,.30),
+                0 16px 22px rgba(0,0,0,.25);
             transform: translateY(0);
             filter: none;
             cursor: pointer;
@@ -1346,7 +1109,6 @@
             transition: transform 90ms ease-out, box-shadow 90ms ease-out;
         }
 
-        /* Cara superior ligeramente cóncava */
         .btn-japan::before {
             content: "";
             position: absolute;
@@ -1356,29 +1118,24 @@
             pointer-events: none;
             background: linear-gradient(
                 180deg,
-                rgba(0, 0, 0, .10),
+                rgba(0,0,0,.10),
                 transparent 48%,
-                rgba(255, 255, 255, .07)
+                rgba(255,255,255,.07)
             );
             box-shadow:
-                inset 0 1px 2px rgba(0, 0, 0, .12),
-                0 1px 0 rgba(255, 255, 255, .13);
+                inset 0 1px 2px rgba(0,0,0,.12),
+                0 1px 0 rgba(255,255,255,.13);
         }
 
-        .btn-japan:hover {
-            filter: none;
-        }
+        .btn-japan:hover { filter: none; }
 
         .btn-japan__icon {
             display: inline-flex;
             flex-shrink: 0;
-            filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, .22));
+            filter: drop-shadow(0 -1px 0 rgba(0,0,0,.22));
         }
 
-        .btn-japan__icon svg {
-            width: 20px;
-            height: 20px;
-        }
+        .btn-japan__icon svg { width: 20px; height: 20px; }
 
         .btn-japan__kanji {
             display: grid;
@@ -1387,53 +1144,49 @@
             min-width: 40px;
             height: 34px;
             padding: 0 8px;
-            border: 1px solid rgba(106, 0, 24, .18);
+            border: 1px solid rgba(106,0,24,.18);
             border-radius: 4px;
-            background: rgba(255, 255, 255, .95);
+            background: rgba(255,255,255,.95);
             color: #bc002d;
-            font: 800 .85rem "Hiragino Mincho ProN",
-                "Yu Mincho", "Noto Serif JP", serif;
+            font: 800 .85rem "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
             text-shadow: none;
             transform: rotate(-4deg);
             box-shadow:
-                inset 0 1px 2px rgba(106, 0, 24, .16),
-                0 1px 0 rgba(255, 255, 255, .22);
+                inset 0 1px 2px rgba(106,0,24,.16),
+                0 1px 0 rgba(255,255,255,.22);
         }
 
         .btn-japan:active {
             transform: translateY(6px);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, .35),
-                inset 0 -2px 4px rgba(0, 0, 0, .24),
+                inset 0 1px 0 rgba(255,255,255,.35),
+                inset 0 -2px 4px rgba(0,0,0,.24),
                 0 1px 0 #6a0018,
                 0 2px 0 #450010,
-                0 4px 6px rgba(0, 0, 0, .30);
+                0 4px 6px rgba(0,0,0,.30);
         }
 
-        /* Conserva la inversión de colores del modo Japón */
         .btn-japan[aria-pressed="true"] {
-            background: linear-gradient(180deg, #ffffff, #f1ede8);
+            background: linear-gradient(180deg, #fff, #f1ede8);
             border-color: #a9a39a;
             color: #bc002d;
             text-shadow: none;
             transform: translateY(5px);
             box-shadow:
-                inset 0 1px 3px rgba(0, 0, 0, .14),
-                inset 0 -1px 0 rgba(255, 255, 255, .75),
+                inset 0 1px 3px rgba(0,0,0,.14),
+                inset 0 -1px 0 rgba(255,255,255,.75),
                 0 2px 0 #a9a39a,
                 0 3px 0 #77716a,
-                0 5px 8px rgba(0, 0, 0, .28);
+                0 5px 8px rgba(0,0,0,.28);
         }
 
-        .btn-japan[aria-pressed="true"]:active {
-            transform: translateY(6px);
-        }
+        .btn-japan[aria-pressed="true"]:active { transform: translateY(6px); }
 
         .btn-japan[aria-pressed="true"] .btn-japan__kanji {
             background: #bc002d;
             color: #fff;
             box-shadow:
-                inset 0 1px 3px rgba(0, 0, 0, .25),
+                inset 0 1px 3px rgba(0,0,0,.25),
                 0 1px 0 #fff;
         }
 
@@ -1443,12 +1196,10 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .btn-japan {
-                transition: none;
-            }
+            .btn-japan { transition: none; }
         }
 
-        /* Biblioteca independiente: conserva el diseño de sus tarjetas. */
+        /* BIBLIOTECA INDEPENDIENTE */
         dialog.hbo-hub-container {
             position: fixed;
             inset: 0;
@@ -1467,9 +1218,7 @@
             overscroll-behavior: contain;
         }
 
-        dialog.hbo-hub-container::backdrop {
-            background: var(--bg-color);
-        }
+        dialog.hbo-hub-container::backdrop { background: var(--bg-color); }
 
         .video-title__link {
             font: inherit;
@@ -1488,385 +1237,723 @@
         }
 
         @media (max-width: 767px) {
-            dialog.hbo-hub-container {
-                padding: 20px 16px;
-            }
-
-            #hboHub .hub-top-bar {
-                gap: 16px;
-                flex-wrap: wrap;
-            }
-
-            #hboHub .hbo-tabs {
-                flex-wrap: wrap;
-            }
+            dialog.hbo-hub-container { padding: 20px 16px; }
+            #hboHub .hub-top-bar { gap: 16px; flex-wrap: wrap; }
+            #hboHub .hbo-tabs { flex-wrap: wrap; }
         }
 
-/* JAPAN MODE — tecla retro rojo mate NUEVO 9-10-2026*/
-#japanBtn {
-    --key-body:
-        linear-gradient(
-            110deg,
-            #00000020,
-            transparent 20% 78%,
-            #00000030
-        ),
-        linear-gradient(
-            #db3653 0%,   
-            #bd1238 28%,
-            #940c2b 76%,
-            #68071d 100%
-);
+        /* JAPAN MODE — TECLA RETRO ROJO MATE */
+        #japanBtn {
+            --key-body:
+                linear-gradient(110deg, #00000020, transparent 20% 78%, #00000030),
+                linear-gradient(#db3653 0%, #bd1238 28%, #940c2b 76%, #68071d 100%);
 
-    position: relative;
-    isolation: isolate;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    align-content: center;
-    align-items: center;
-    justify-content: stretch;
-    gap: 10px 8px;
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            align-content: center;
+            align-items: center;
+            justify-content: stretch;
+            gap: 10px 8px;
+            width: 180px;
+            max-width: 100%;
+            height: 70px;
+            min-height: 50px;
+            margin: 20px 0 16px;
+            padding: 16px 25px 30px;
+            appearance: none;
+            border: 1px solid #642820;
+            border-radius: 9px;
+            background: var(--key-body);
+            color: #f3e7ce;
+            font: 600 15px/1.1 var(--font-apple);
+            letter-spacing: .025em;
+            text-shadow: 0 1px 1px #51251d55;
+            box-shadow:
+                inset 0 1px 1px #e3998160,
+                inset 0 -2px 3px #41191466,
+                0 3px 0 #49201b,
+                0 5px 0 #301b18,
+                0 9px 12px #00000040;
+            transform: translateY(0);
+            filter: none;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: transform 100ms ease, box-shadow 100ms ease;
+        }
 
-    width: 180px;
-    max-width: 100%;
-    height: 70px;
-    min-height: 50px;
-    margin: 20px 0 16px;
-    padding: 16px 25px 30px;
+        #japanBtn::before {
+            content: "";
+            position: absolute;
+            inset: 8px 13px 22px;
+            z-index: -1;
+            border-radius: 8px 8px 11px 11px;
+            background:
+                radial-gradient(ellipse at 50% 25%, #74072044, transparent 75%),
+                linear-gradient(160deg, #cf2046, #bc1238 55%, #d52b50);
+            box-shadow:
+                inset 0 2px 5px #60251f30,
+                inset 0 -1px 2px #e3957950,
+                0 -1px 1px #e9a48d60,
+                0 2px 3px #61221c30;
+            pointer-events: none;
+        }
 
-    appearance: none;
-    border: 1px solid #642820;
-    border-radius: 9px;
-    background: var(--key-body);
+        #japanBtn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: .18;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+        }
 
-    color: #f3e7ce;
-    font: 600 15px/1.1 var(--font-apple);
-    letter-spacing: .025em;
-    text-shadow: 0 1px 1px #51251d55;
+        #japanBtn .btn-japan__text {
+            grid-column: 1 / -1;
+            grid-row: 1;
+            text-align: left;
+            white-space: nowrap;
+        }
 
-    box-shadow:
-        inset 0 1px 1px #e3998160,
-        inset 0 -2px 3px #41191466,
-        0 3px 0 #49201b,
-        0 5px 0 #301b18,
-        0 9px 12px #00000040;
+        #japanBtn .btn-japan__icon {
+            grid-column: 2;
+            grid-row: 2;
+            display: inline-flex;
+            justify-self: end;
+            filter: none;
+            opacity: .8;
+        }
 
-    transform: translateY(0);
-    filter: none;
-    cursor: pointer;
-    touch-action: manipulation;
+        #japanBtn .btn-japan__icon svg { width: 17px; height: 17px; }
 
-    transition:
-        transform 100ms ease,
-        box-shadow 100ms ease;
-}
+        #japanBtn .btn-japan__kanji {
+            grid-column: 1;
+            grid-row: 2;
+            display: block;
+            justify-self: start;
+            min-width: 0;
+            height: auto;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: inherit;
+            font: 600 12px/1 "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+            letter-spacing: .12em;
+            text-shadow: inherit;
+            box-shadow: none;
+            transform: none;
+            opacity: .85;
+        }
 
-/* Cara superior hundida y bisel frontal ancho */
-#japanBtn::before {
-    content: "";
-    position: absolute;
-    inset: 8px 13px 22px;
-    z-index: -1;
-    border-radius: 8px 8px 11px 11px;
+        #japanBtn:hover { filter: none; }
 
-background:
-    radial-gradient(
-        ellipse at 50% 25%,
-        #74072044,
-        transparent 75%
-    ),
-    linear-gradient(
-        160deg,
-        #cf2046,
-        #bc1238 55%,
-        #d52b50
-    );
+        #japanBtn[aria-pressed="true"],
+        #japanBtn:active {
+            background: var(--key-body);
+            border-color: #642820;
+            color: #f3e7ce;
+            text-shadow: 0 1px 1px #51251d55;
+            transform: translateY(3px);
+            box-shadow:
+                inset 0 1px 1px #e3998140,
+                inset 0 -2px 3px #41191466,
+                0 1px 0 #49201b,
+                0 2px 0 #301b18,
+                0 4px 6px #00000040;
+        }
 
-    box-shadow:
-        inset 0 2px 5px #60251f30,
-        inset 0 -1px 2px #e3957950,
-        0 -1px 1px #e9a48d60,
-        0 2px 3px #61221c30;
+        #japanBtn[aria-pressed="true"]:active { transform: translateY(4px); }
 
-    pointer-events: none;
-}
+        #japanBtn:focus-visible {
+            outline: 2px solid #f3e7ce;
+            outline-offset: 7px;
+        }
 
-/* Microtextura de plástico mate */
-#japanBtn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: .18;
+        @media (prefers-reduced-motion: reduce) {
+            #japanBtn { transition: none; }
+        }
 
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
-}
+        /* EXPLORAR BIBLIOTECA / ABRIR CARPETA — TONO HUESO */
+        .btn-open-hub {
+            position: relative;
+            isolation: isolate;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            width: 180px;
+            max-width: 100%;
+            min-height: 40px;
+            padding: 14px 22px 24px;
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #a59a84;
+            border-radius: 8px;
+            background:
+                linear-gradient(
+                    110deg,
+                    rgba(91,76,52,.12),
+                    transparent 20% 78%,
+                    rgba(91,76,52,.18)
+                ),
+                linear-gradient(
+                    #f4edde 0%,
+                    #dcd2bf 28%,
+                    #bdb097 76%,
+                    #a4967d 100%
+                );
+            color: #514638;
+            font: 600 14px/1.2 var(--font-apple);
+            letter-spacing: .015em;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255,252,240,.6);
+            box-shadow:
+                inset 0 1px 1px rgba(255,253,239,.7),
+                inset 0 -2px 3px rgba(87,72,49,.25),
+                0 3px 0 #8c7e66,
+                0 5px 0 #6e624f,
+                0 9px 12px rgba(0,0,0,.22);
+            transform: translateY(0);
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 100ms ease, box-shadow 100ms ease;
+        }
 
-/* Leyenda principal */
-#japanBtn .btn-japan__text {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    text-align: left;
-    white-space: nowrap;
-}
+        .btn-open-hub::before {
+            content: "";
+            position: absolute;
+            inset: 6px 10px 16px;
+            z-index: -1;
+            border-radius: 6px 6px 9px 9px;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    ellipse at 50% 25%,
+                    rgba(145,126,94,.14),
+                    transparent 75%
+                ),
+                linear-gradient(160deg, #eee5d3, #e5dbc7 55%, #f0e7d5);
+            box-shadow:
+                inset 0 2px 4px rgba(111,91,61,.13),
+                inset 0 -1px 2px rgba(255,251,234,.65),
+                0 -1px 1px rgba(255,253,241,.65),
+                0 2px 3px rgba(103,84,55,.15);
+        }
 
-/* Icono japonés en la esquina inferior derecha */
-#japanBtn .btn-japan__icon {
-    grid-column: 2;
-    grid-row: 2;
-    display: inline-flex;
-    justify-self: end;
-    filter: none;
-    opacity: .8;
-}
+        .btn-open-hub::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: .14;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+        }
 
-#japanBtn .btn-japan__icon svg {
-    width: 17px;
-    height: 17px;
-}
+        .btn-open-hub:hover { transform: translateY(0); }
 
-/* Leyenda japonesa impresa sobre el plástico */
-#japanBtn .btn-japan__kanji {
-    grid-column: 1;
-    grid-row: 2;
-    display: block;
-    justify-self: start;
+        .btn-open-hub:active {
+            transform: translateY(3px);
+            box-shadow:
+                inset 0 1px 1px rgba(255,253,239,.5),
+                inset 0 -2px 3px rgba(87,72,49,.25),
+                0 1px 0 #8c7e66,
+                0 2px 0 #6e624f,
+                0 4px 6px rgba(0,0,0,.2);
+        }
 
-    min-width: 0;
-    height: auto;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
+        .btn-open-hub:focus-visible {
+            outline: 2px solid #f5ead4;
+            outline-offset: 7px;
+        }
 
-    background: transparent;
-    color: inherit;
-    font: 600 12px/1
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        sans-serif;
-    letter-spacing: .12em;
+        @media (prefers-reduced-motion: reduce) {
+            .btn-open-hub { transition: none; }
+        }
 
-    text-shadow: inherit;
-    box-shadow: none;
-    transform: none;
-    opacity: .85;
-}
+        /* CENTRADO DE LA LEYENDA Y SÍMBOLOS */
+        #japanBtn {
+            grid-template-columns: 20px minmax(0, 1fr) 20px;
+            grid-template-rows: 1fr;
+            align-items: center;
+            justify-items: center;
+            gap: 6px;
+            padding: 8px 17px 22px;
+        }
 
-#japanBtn:hover {
-    filter: none;
-}
+        #japanBtn .btn-japan__icon {
+            grid-column: 1;
+            grid-row: 1;
+            justify-self: center;
+            align-self: center;
+            opacity: 1;
+        }
 
-/* Activado: conserva el rojo y queda hundido */
-#japanBtn[aria-pressed="true"],
-#japanBtn:active {
-    background: var(--key-body);
-    border-color: #642820;
-    color: #f3e7ce;
-    text-shadow: 0 1px 1px #51251d55;
-    transform: translateY(3px);
+        #japanBtn .btn-japan__icon svg { width: 18px; height: 18px; }
 
-    box-shadow:
-        inset 0 1px 1px #e3998140,
-        inset 0 -2px 3px #41191466,
-        0 1px 0 #49201b,
-        0 2px 0 #301b18,
-        0 4px 6px #00000040;
-}
+        #japanBtn .btn-japan__text {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: center;
+            align-self: center;
+            font-size: 13px;
+            text-align: center;
+            white-space: nowrap;
+        }
 
-#japanBtn[aria-pressed="true"]:active {
-    transform: translateY(4px);
-}
+        #japanBtn .btn-japan__kanji {
+            grid-column: 3;
+            grid-row: 1;
+            justify-self: center;
+            align-self: center;
+            font-size: 10px;
+            letter-spacing: 0;
+            text-align: center;
+            white-space: nowrap;
+            opacity: 1;
+        }
 
-#japanBtn:focus-visible {
-    outline: 2px solid #f3e7ce;
-    outline-offset: 7px;
-}
+        /* BIBLIOTECA CINEMATOGRÁFICA */
+        #hboHub {
+            padding: 0;
+            background: #0c0d10;
+            color: #f4f0e8;
+            font-family: var(--font-apple);
+            color-scheme: dark;
+        }
 
-@media (prefers-reduced-motion: reduce) {
-    #japanBtn {
-        transition: none;
-    }
-}
+        #hboHub::backdrop { background: #0c0d10; }
+        #hboHub [hidden] { display: none !important; }
+        #hboHub button { font-family: inherit; cursor: pointer; }
 
-/* EXPLORAR BIBLIOTECA / ABRIR CARPETA — teclas tono hueso */
-.btn-open-hub {
-    position: relative;
-    isolation: isolate;
+        #hboHub button:focus-visible {
+            outline: 2px solid #ead8b5;
+            outline-offset: 5px;
+        }
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-start;
+        #hboHub .cin-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            min-height: 76px;
+            padding: 18px 5vw;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: rgba(12,13,16,.94);
+            border-bottom: 1px solid #ffffff12;
+            backdrop-filter: blur(16px);
+        }
 
-    width: 180px;
-    max-width: 100%;
-    min-height: 40px;
-    padding: 14px 22px 24px;
+        #hboHub .cin-brand {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .04em;
+        }
 
-    appearance: none;
-    -webkit-appearance: none;
-    border: 1px solid #a59a84;
-    border-radius: 8px;
+        #hboHub .cin-brand span {
+            display: block;
+            color: #aaa9af;
+            font-size: 10px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
 
-    /* Cuerpo y biseles */
-    background:
-        linear-gradient(
-            110deg,
-            rgba(91, 76, 52, .12),
-            transparent 20% 78%,
-            rgba(91, 76, 52, .18)
-        ),
-        linear-gradient(
-            #f4edde 0%,
-            #dcd2bf 28%,
-            #bdb097 76%,
-            #a4967d 100%
-        );
+        #hboHub .cin-home {
+            margin-left: auto;
+            color: #d3c7b3;
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
 
-    color: #514638;
-    font: 600 14px/1.2 var(--font-apple);
-    letter-spacing: .015em;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(255, 252, 240, .6);
+        #hboHub .btn-back-video,
+        #hboHub .cin-back {
+            background: transparent;
+            border: 1px solid #ffffff30;
+            border-radius: 5px;
+            padding: 9px 13px;
+            color: #f4f0e8;
+            font-size: 12px;
+        }
 
-    box-shadow:
-        inset 0 1px 1px rgba(255, 253, 239, .7),
-        inset 0 -2px 3px rgba(87, 72, 49, .25),
-        0 3px 0 #8c7e66,
-        0 5px 0 #6e624f,
-        0 9px 12px rgba(0, 0, 0, .22);
+        #hboHub .cin-hero {
+            position: relative;
+            min-height: 560px;
+            min-height: min(660px, 76dvh);
+            display: flex;
+            align-items: flex-end;
+            isolation: isolate;
+            background: #272a30;
+        }
 
-    transform: translateY(0);
-    cursor: pointer;
-    user-select: none;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+        #hboHub .cin-backdrop {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            z-index: -2;
+            opacity: .68;
+        }
 
-    transition:
-        transform 100ms ease,
-        box-shadow 100ms ease;
-}
+        #hboHub .cin-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(
+                    0deg,
+                    #0c0d10 0%,
+                    rgba(12,13,16,.35) 60%,
+                    rgba(12,13,16,.15)
+                ),
+                linear-gradient(90deg, rgba(12,13,16,.7), transparent 80%);
+        }
 
-/* Cara superior ligeramente cóncava */
-.btn-open-hub::before {
-    content: "";
-    position: absolute;
-    inset: 6px 10px 16px;
-    z-index: -1;
-    border-radius: 6px 6px 9px 9px;
-    pointer-events: none;
+        #hboHub .cin-hero-copy {
+            padding: 70px 7vw 55px;
+            width: min(800px, 100%);
+        }
 
-    background:
-        radial-gradient(
-            ellipse at 50% 25%,
-            rgba(145, 126, 94, .14),
-            transparent 75%
-        ),
-        linear-gradient(
-            160deg,
-            #eee5d3,
-            #e5dbc7 55%,
-            #f0e7d5
-        );
+        #hboHub .cin-eyebrow {
+            color: #d6c5a6;
+            text-transform: uppercase;
+            letter-spacing: .23em;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
 
-    box-shadow:
-        inset 0 2px 4px rgba(111, 91, 61, .13),
-        inset 0 -1px 2px rgba(255, 251, 234, .65),
-        0 -1px 1px rgba(255, 253, 241, .65),
-        0 2px 3px rgba(103, 84, 55, .15);
-}
+        #hboHub .cin-hero h2 {
+            font-size: clamp(36px, 6.5vw, 84px);
+            line-height: 1.02;
+            font-weight: 600;
+            letter-spacing: -.055em;
+            margin-bottom: 20px;
+            text-wrap: balance;
+        }
 
-/* Textura fina de plástico mate */
-.btn-open-hub::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: .14;
+        #hboHub .cin-summary {
+            color: #cbcbd0;
+            font-size: 15px;
+            line-height: 1.8;
+            max-width: 460px;
+            margin: 18px 0 25px;
+        }
 
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
-}
+        #hboHub .cin-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: #c1bfc5;
+            font-size: 11px;
+            letter-spacing: .04em;
+        }
 
-/* Sustituye el aumento de tamaño del hover anterior */
-.btn-open-hub:hover {
-    transform: translateY(0);
-}
+        #hboHub .cin-meta span + span::before {
+            content: "·";
+            margin-right: 10px;
+            color: #d8cbb4;
+        }
 
-/* Presión física de la tecla */
-.btn-open-hub:active {
-    transform: translateY(3px);
+        #hboHub .cin-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    box-shadow:
-        inset 0 1px 1px rgba(255, 253, 239, .5),
-        inset 0 -2px 3px rgba(87, 72, 49, .25),
-        0 1px 0 #8c7e66,
-        0 2px 0 #6e624f,
-        0 4px 6px rgba(0, 0, 0, .2);
-}
+        #hboHub .cin-primary,
+        #hboHub .cin-secondary {
+            min-height: 44px;
+            padding: 12px 22px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #ffffff35;
+            color: #f4f0e8;
+            background: #ffffff0a;
+        }
 
-.btn-open-hub:focus-visible {
-    outline: 2px solid #f5ead4;
-    outline-offset: 7px;
-}
+        #hboHub .cin-primary {
+            background: #eee5d5;
+            color: #24211c;
+            border-color: #eee5d5;
+        }
 
-@media (prefers-reduced-motion: reduce) {
-    .btn-open-hub {
-        transition: none;
-    }
-}
+        #hboHub .cin-primary:hover { background: #fff6e6; }
+        #hboHub .cin-secondary:hover { background: #ffffff15; }
+        #hboHub .cin-catalog { padding: 10px 7vw 70px; }
 
-#japanBtn {
-    grid-template-columns: 20px minmax(0, 1fr) 20px;
-    grid-template-rows: 1fr;
-    align-items: center;
-    justify-items: center;
-    gap: 6px;
+        #hboHub .cin-catalog-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 26px;
+            border-bottom: 1px solid #ffffff15;
+        }
 
-    /* Centrado dentro de la cara superior de la tecla */
-    padding: 8px 17px 22px;
-}
+        #hboHub .cin-catalog-head h3 {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -.03em;
+        }
 
-#japanBtn .btn-japan__icon {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
-    opacity: 1;
-}
+        #hboHub .cin-catalog-head p {
+            color: #929099;
+            font-size: 12px;
+            margin-top: 5px;
+        }
 
-#japanBtn .btn-japan__icon svg {
-    width: 18px;
-    height: 18px;
-}
+        #hboHub .cin-filters { display: flex; gap: 7px; flex-wrap: wrap; }
 
-#japanBtn .btn-japan__text {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
+        #hboHub .cin-filter {
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 9px 14px;
+            color: #b2b0b8;
+            background: transparent;
+            font-size: 12px;
+        }
 
-    font-size: 13px;
-    text-align: center;
-    white-space: nowrap;
-}
+        #hboHub .cin-filter[aria-pressed="true"] {
+            color: #f2e8d6;
+            border-color: #ffffff30;
+            background: #ffffff0a;
+        }
 
-#japanBtn .btn-japan__kanji {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
+        #hboHub .cin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 26px;
+            margin-top: 30px;
+        }
 
-    font-size: 10px;
-    letter-spacing: 0;
-    text-align: center;
-    white-space: nowrap;
-    opacity: 1;
-}
+        #hboHub .cin-card {
+            width: 100%;
+            max-width: 245px;
+            text-align: left;
+            background: none;
+            border: 0;
+            padding: 0;
+            color: inherit;
+        }
+
+        #hboHub .cin-poster {
+            position: relative;
+            display: block;
+            aspect-ratio: 2/3;
+            border-radius: 5px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #34323c, #18191e);
+            border: 1px solid #ffffff15;
+            transition: transform .2s ease;
+        }
+
+        #hboHub .cin-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 1;
+        }
+
+        #hboHub .cin-poster-title {
+            position: absolute;
+            z-index: 1;
+            bottom: 20px;
+            left: 17px;
+            right: 17px;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -.04em;
+        }
+
+        #hboHub .cin-card:hover .cin-poster { transform: translateY(-5px); }
+
+        #hboHub .cin-card strong {
+            display: block;
+            margin-top: 13px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        #hboHub .cin-card small {
+            display: block;
+            margin-top: 6px;
+            font-size: 11px;
+            color: #aaa7b1;
+        }
+
+        #hboHub .cin-empty {
+            padding: 40px 0;
+            color: #aaa7b1;
+            font-size: 14px;
+        }
+
+        #hboHub .cin-detail-back {
+            position: absolute;
+            top: 24px;
+            left: 7vw;
+        }
+
+        #hboHub .cin-info {
+            position: relative;
+            display: grid;
+            grid-template-columns: 160px minmax(0, 1fr);
+            gap: 38px;
+            padding: 0 7vw 60px;
+            max-width: 1100px;
+            margin-top: -10px;
+        }
+
+        #hboHub .cin-info-poster {
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ffffff20;
+            background: #25252a;
+        }
+
+        #hboHub .cin-info h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 0 14px;
+        }
+
+        #hboHub .cin-info p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #b7b5be;
+        }
+
+        #hboHub .cin-info dl {
+            display: flex;
+            gap: 35px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #ffffff15;
+            font-size: 12px;
+        }
+
+        #hboHub .cin-info dt { color: #85838d; margin-bottom: 5px; }
+
+        #hboHub .cin-foot {
+            border-top: 1px solid #ffffff12;
+            margin: 0 7vw;
+            padding: 25px 0;
+            color: #777580;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        #cinPlayer {
+            width: min(1000px, 94vw);
+            max-width: 94vw;
+            max-height: 94dvh;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #ffffff25;
+            border-radius: 8px;
+            background: #121318;
+            color: #eee9df;
+            overflow: auto;
+        }
+
+        #cinPlayer::backdrop { background: rgba(0,0,0,.9); }
+
+        #cinPlayer header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        #cinPlayer h3 { font: 500 16px var(--font-apple); }
+
+        #cinPlayer button {
+            background: none;
+            border: 1px solid #ffffff40;
+            color: #fff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        #cinMedia { aspect-ratio: 16/9; background: #000; }
+
+        #cinMedia iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        #cinPlayer .cin-player-note {
+            padding: 15px 20px;
+            color: #aaa7b1;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 650px) {
+            #hboHub .cin-nav { gap: 12px; min-height: 68px; padding: 14px 5vw; }
+            #hboHub .cin-home { display: none; }
+            #hboHub .cin-brand { font-size: 12px; }
+            #hboHub .cin-hero { min-height: 520px; }
+            #hboHub .cin-hero-copy { padding: 80px 6vw 35px; }
+            #hboHub .cin-catalog { padding: 12px 6vw 45px; }
+            #hboHub .cin-catalog-head { align-items: start; flex-direction: column; }
+            #hboHub .cin-filters { gap: 2px; }
+            #hboHub .cin-filter { padding: 9px 11px; }
+            #hboHub .cin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+            #hboHub .cin-poster-title { font-size: 21px; left: 12px; bottom: 15px; }
+
+            #hboHub .cin-info {
+                grid-template-columns: 80px minmax(0, 1fr);
+                gap: 20px;
+                padding: 10px 6vw 40px;
+            }
+
+            #hboHub .cin-info dl { gap: 15px; flex-wrap: wrap; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #hboHub .cin-poster { transition: none; }
+        }
+
+        #hboHub {
+            inset: 0;
+            margin: 0;
+            width: 100%;
+            height: 100dvh;
+            max-width: none;
+            max-height: none;
+            border: 0;
+            border-radius: 0;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        #hboHub:not([open]) { display: none; }
+
+        #cinPlayer button:focus-visible {
+            outline: 2px solid #ead8b5;
+            outline-offset: 3px;
+        }
     </style>
 </head>
+
 
 <body>
     <!-- 1. INICIO -->
@@ -1920,7 +2007,6 @@ background:
                     role="button"
                     aria-label="Voltear pase de abordar"
                 >
-                    <!-- FRENTE -->
                     <div class="pass__face pass__front">
                         <div class="pass__top">
                             <span>Boarding Pass</span>
@@ -1945,7 +2031,6 @@ background:
                         </div>
                     </div>
 
-                    <!-- REVERSO -->
                     <div class="pass__face pass__back">
                         <div class="pass__msg">Dios cuide de tí a donde quiera que tus pies te lleven.</div>
                         <div class="pass__hint">toca para voltear</div>
@@ -1953,7 +2038,6 @@ background:
                 </div>
             </div>
 
-            <!-- WIDGETS CON ENLACE EXTERNO -->
             <div class="widgets">
                 <a
                     class="widget"
@@ -2042,7 +2126,7 @@ background:
         </div>
     </section>
 
-    <!-- 2. MI ESPACIO (SEGUNDA SECCIÓN) -->
+    <!-- 2. MI ESPACIO -->
     <section id="mis-cosas">
         <div class="video-wrapper" id="videoContainer">
             <video class="bg-video" autoplay loop muted playsinline>
@@ -2067,127 +2151,237 @@ background:
             </div>
         </div>
 
-        <!-- BIBLIOTECA INDEPENDIENTE A PANTALLA COMPLETA -->
+        <!-- BIBLIOTECA MULTIMEDIA -->
         <dialog
             class="hbo-hub-container"
             id="hboHub"
             aria-labelledby="hubTitle"
         >
-            <div class="hub-top-bar">
-                <div class="hbo-header">
-                    <h2 id="hubTitle">Biblioteca</h2>
-                    <p>Contenido cultural seleccionado</p>
+            <header class="cin-nav">
+                <button class="btn-back-video" onclick="showVideo()">
+                    ← Salir
+                </button>
+
+                <div class="cin-brand" id="hubTitle">
+                    Mein Bunchhändler
+                    <span>La biblioteca de Anni</span>
                 </div>
 
-                <button class="btn-back-video" onclick="showVideo()">
-                    ← Volver
-                </button>
-            </div>
+                <span class="cin-home">Un ratito en español</span>
+            </header>
 
-            <div class="hbo-tabs">
-                <button
-                    class="hbo-tab active"
-                    onclick="filterCategory('all', event)"
-                >Todo</button>
-
-                <button
-                    class="hbo-tab"
-                    onclick="filterCategory('cine', event)"
-                >Series</button>
-
-                <button
-                    class="hbo-tab"
-                    onclick="filterCategory('libros', event)"
-                >Libros</button>
-            </div>
-
-        <div class="hbo-row" data-category="cine">
-    <div class="hbo-row__title">Series</div>
-
-<div class="hbo-row" data-category="cine">
-    <div class="hbo-row__title">Películas</div>
-
-<!--YOUTUBE DORA LA EXPLORADORA-->
-
-    <div class="hbo-row__slider">
-        <div
-            class="hbo-card hbo-card--wide"
-            onclick="openModal(
-                'Dora La Exploradora',
-                'Serie',
-                'Versión Español México.',
-                'https://www.youtube.com/embed/Nb5dzX4jx6I',
-                'youtube'
-            )"
-        >
-            <img
-                src="posters/2af01b2dda7240f03ac1a2744c3d3756.jpg"
-                class="hbo-card__img"
-                alt="Dora La Exploradora"
-            >
-
-            <div class="hbo-card__overlay">
-                <span class="hbo-card__tag">Serie</span>
-                <h3 class="hbo-card__title">Dora La Exploradora</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--YOUTUBE LOONEY TUNES-->
-
-    <div class="hbo-row__slider">
-        <div
-            class="hbo-card hbo-card--wide"
-            onclick="openModal(
-                'Looney Tunes',
-                'Serie',
-                'Versión Español México.',
-                'https://www.youtube.com/embed/kDWeYbQBY_0?si=V6b7oqNMX-Mh28iV',
-                'youtube'
-            )"
-        >
-            <img
-                src="posters/b8d7470e133c7f23f75bff3137d65fc2.jpg"
-                class="hbo-card__img"
-                alt="Looney Tunes"
-            >
-
-            <div class="hbo-card__overlay">
-                <span class="hbo-card__tag">Serie</span>
-                <h3 class="hbo-card__title">Looney Tunes</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-            <div class="hbo-row" data-category="libros">
-                <div class="hbo-row__title">Libros</div>
-
-                <div class="hbo-row__slider">
-                    <div
-                        class="hbo-card"
-                        onclick="openModal('Pedro Páramo', 'Juan Rulfo', 'Novela clásica hispanoamericana.', 'imagenes/20240915_115021_Original.jpg', 'image')"
+            <div id="cinCatalog">
+                <div class="cin-hero">
+                    <img
+                        class="cin-backdrop"
+                        src="posters/2af01b2dda7240f03ac1a2744c3d3756.jpg"
+                        alt=""
                     >
-                        <img
-                            src="imagenes/20240915_115021_Original.jpg"
-                            class="hbo-card__img"
-                            alt="Pedro Páramo"
-                        >
 
-                        <div class="hbo-card__overlay">
-                            <span class="hbo-card__tag">Novela</span>
-                            <h3 class="hbo-card__title">Pedro Páramo</h3>
+                    <div class="cin-hero-copy">
+                        <p class="cin-eyebrow">
+                            En tu biblioteca · Selección 01
+                        </p>
+
+                        <h2>Dora la<br>Exploradora</h2>
+
+                        <div class="cin-meta">
+                            <span>Serie</span>
+                            <span>Español · México</span>
+                        </div>
+
+                        <p class="cin-summary">
+                            Un momento para escuchar español y disfrutar de una aventura.
+                        </p>
+
+                        <div class="cin-actions">
+                            <button
+                                class="cin-primary"
+                                onclick="playCinema('dora')"
+                            >
+                                ▶ Reproducir
+                            </button>
+
+                            <button
+                                class="cin-secondary"
+                                onclick="openCinemaDetail('dora')"
+                            >
+                                Ver ficha ↗
+                            </button>
                         </div>
                     </div>
                 </div>
+
+                <div class="cin-catalog">
+                    <div class="cin-catalog-head">
+                        <div>
+                            <h3>Tu colección</h3>
+                            <p>Historias para descubrir a tu ritmo.</p>
+                        </div>
+
+                        <div
+                            class="cin-filters"
+                            role="group"
+                            aria-label="Filtrar colección"
+                        >
+                            <button
+                                class="cin-filter"
+                                aria-pressed="true"
+                                onclick="filterCategory('all', event)"
+                            >Todo</button>
+
+                            <button
+                                class="cin-filter"
+                                aria-pressed="false"
+                                onclick="filterCategory('cine', event)"
+                            >Películas</button>
+
+                            <button
+                                class="cin-filter"
+                                aria-pressed="false"
+                                onclick="filterCategory('series', event)"
+                            >Series</button>
+                        </div>
+                    </div>
+
+                    <div class="cin-grid">
+                        <button
+                            class="cin-card"
+                            data-category="series"
+                            onclick="openCinemaDetail('dora')"
+                        >
+                            <span class="cin-poster">
+                                <img
+                                    src="posters/2af01b2dda7240f03ac1a2744c3d3756.jpg"
+                                    alt=""
+                                    loading="lazy"
+                                >
+                            </span>
+
+                            <strong>Dora La Exploradora</strong>
+                            <small>Serie · Español México</small>
+                        </button>
+
+                        <button
+                            class="cin-card"
+                            data-category="series"
+                            onclick="openCinemaDetail('looney')"
+                        >
+                            <span class="cin-poster">
+                                <img
+                                    src="posters/b8d7470e133c7f23f75bff3137d65fc2.jpg"
+                                    alt=""
+                                    loading="lazy"
+                                >
+                            </span>
+
+                            <strong>Looney Tunes</strong>
+                            <small>Serie · Español México</small>
+                        </button>
+                    </div>
+
+                    <p
+                        class="cin-empty"
+                        id="cinEmpty"
+                        hidden
+                        role="status"
+                    >
+                        Todavía no hay títulos en esta categoría.
+                    </p>
+                </div>
             </div>
+
+            <div id="cinDetail" hidden>
+                <div class="cin-hero">
+                    <img
+                        class="cin-backdrop"
+                        id="cinDetailImage"
+                        alt=""
+                    >
+
+                    <button
+                        class="cin-back cin-detail-back"
+                        onclick="closeCinemaDetail()"
+                    >
+                        ← Colección
+                    </button>
+
+                    <div class="cin-hero-copy">
+                        <p
+                            class="cin-eyebrow"
+                            id="cinDetailCategory"
+                        ></p>
+
+                        <h2
+                            id="cinDetailTitle"
+                            tabindex="-1"
+                        ></h2>
+
+                        <p
+                            class="cin-summary"
+                            id="cinDetailSummary"
+                        ></p>
+
+                        <button
+                            class="cin-primary"
+                            id="cinDetailPlay"
+                        >
+                            ▶ Reproducir
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cin-info">
+                    <img
+                        class="cin-info-poster"
+                        id="cinDetailPoster"
+                        alt=""
+                    >
+
+                    <div>
+                        <h3>Sobre este título</h3>
+                        <p id="cinDetailDescription"></p>
+
+                        <dl>
+                            <div>
+                                <dt>Formato</dt>
+                                <dd id="cinDetailFormat"></dd>
+                            </div>
+
+                            <div>
+                                <dt>Idioma</dt>
+                                <dd>Español</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="cin-foot">
+                <span>Seleccionado para Anni.</span>
+                <span>Mein Bunchhändler</span>
+            </footer>
+        </dialog>
+
+        <dialog id="cinPlayer" aria-labelledby="cinPlayerTitle">
+            <header>
+                <h3 id="cinPlayerTitle"></h3>
+
+                <button
+                    onclick="closeModal()"
+                    aria-label="Cerrar reproductor"
+                >
+                    Cerrar ×
+                </button>
+            </header>
+
+            <div id="cinMedia"></div>
+
+            <p class="cin-player-note">Español · México</p>
         </dialog>
     </section>
 
-    <!-- 3. GUADALAJARA (TERCERA SECCIÓN) -->
+    <!-- 3. GUADALAJARA -->
     <section class="hero" id="Guadalajara">
         <div class="hero__container">
             <div class="grid-three">
@@ -2262,7 +2456,7 @@ background:
         </div>
     </section>
 
-    <!-- PANTALLA COMPLETA: FOLDER UNIVERSITARIO 3D -->
+    <!-- CARPETA UNIVERSITARIA 3D -->
     <div id="palabras-page" class="full-page-section">
         <header class="full-page-header">
             <button class="btn-back" onclick="closePalabrasPage()">
@@ -2361,30 +2555,10 @@ background:
         </main>
     </div>
 
-    <!-- MODAL MULTIMEDIA -->
-    <div class="hbo-modal" id="hboModal">
-        <div class="hbo-modal__content">
-            <button
-                class="hbo-modal__close"
-                onclick="closeModal()"
-                aria-label="Cerrar modal"
-            >×</button>
-
-            <div class="hbo-modal__media" id="modalMediaContainer"></div>
-
-            <div class="hbo-modal__body">
-                <h3 id="modalTitle"></h3>
-                <p id="modalText"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
     <footer class="footer">
         <p>© 2026 Anni. All Rights Reserved.</p>
     </footer>
 
-    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="bottom-nav">
         <a href="#home" class="nav-item active">Inicio</a>
         <a href="#mis-cosas" class="nav-item">Mein Bunchhändler</a>
@@ -2392,8 +2566,8 @@ background:
         <a href="#palabras-bonitas" class="nav-item">Palabras Bonitas</a>
     </nav>
 
-    <script>
-        /* LÓGICA DE FOLDER UNIVERSITARIO (RING BINDER) */
+        <script>
+        /* CARPETA UNIVERSITARIA */
         const pages = [
             {
                 front: `<div class="cover"><div class="bd"><div class="lb"><b>Semester 3</b><span>Coursework and notes</span><span>Keep this one dry.</span></div></div></div>`,
@@ -2410,7 +2584,7 @@ background:
             {
                 tab: ['Literature', '#F5C4B3', '#4A1B0C'],
                 front: `<div class="face pg"><h3>Literature: seminar</h3><ul><li>Read chapters 4 to 6</li><li>Who tells the story? Can we trust them?</li><li>Bring one quote to argue about</li></ul><br><p><span class="ring">Essay outline due Friday</span></p></div>`
-            },
+            }
         ];
 
         const stage = document.getElementById('st');
@@ -2434,12 +2608,14 @@ background:
 
             if (p.tab) {
                 const b = document.createElement('button');
+
                 b.className = 'tab';
                 b.textContent = p.tab[0];
                 b.style.background = p.tab[1];
                 b.style.color = p.tab[2];
                 b.dataset.i = i;
                 b.onclick = () => go(i);
+
                 tabsEl.appendChild(b);
             }
         });
@@ -2454,18 +2630,19 @@ background:
         function render() {
             leaves.forEach((el, i) => {
                 const flipped = i < current;
+
                 el.classList.toggle('f', flipped);
                 el.style.zIndex = flipped ? i + 2 : N - i + 2;
             });
 
             stage.classList.toggle('open', current > 0);
 
-            tabsEl.querySelectorAll('.tab').forEach(t =>
+            tabsEl.querySelectorAll('.tab').forEach(t => {
                 t.setAttribute(
                     'aria-current',
                     String(+t.dataset.i === current - 1)
-                )
-            );
+                );
+            });
 
             label.textContent =
                 current === 0
@@ -2483,34 +2660,58 @@ background:
 
         addEventListener('keydown', e => {
             if (document.getElementById('hboHub').open) return;
+
             if (e.key === 'ArrowRight') go(current + 1);
             if (e.key === 'ArrowLeft') go(current - 1);
         });
 
         render();
 
-        /* FUNCIONES DE NAVEGACIÓN Y SECCIONES */
+        /* PALABRAS BONITAS */
         function openPalabrasPage() {
-            document.getElementById('palabras-page').classList.add('is-active');
+            document.getElementById('palabras-page')
+                .classList.add('is-active');
+
             document.body.style.overflow = 'hidden';
         }
 
         function closePalabrasPage() {
-            document.getElementById('palabras-page').classList.remove('is-active');
+            document.getElementById('palabras-page')
+                .classList.remove('is-active');
+
             document.body.style.overflow = '';
         }
 
-        /* BIBLIOTECA INDEPENDIENTE */
+        /* BIBLIOTECA MULTIMEDIA */
         const libraryDialog = document.getElementById('hboHub');
-        const libraryModal = document.getElementById('hboModal');
+        const cinemaPlayer = document.getElementById('cinPlayer');
 
-        // El reproductor debe pertenecer a la misma capa que la biblioteca.
-        libraryDialog.appendChild(libraryModal);
+        const cinemaItems = {
+            dora: {
+                title: 'Dora La Exploradora',
+                category: 'Serie',
+                image: 'posters/2af01b2dda7240f03ac1a2744c3d3756.jpg',
+                summary: 'Versión Español México.',
+                description: 'Dora La Exploradora · Versión Español México.',
+                mediaUrl: 'https://www.youtube.com/embed/Nb5dzX4jx6I'
+            },
+            looney: {
+                title: 'Looney Tunes',
+                category: 'Serie',
+                image: 'posters/b8d7470e133c7f23f75bff3137d65fc2.jpg',
+                summary: 'Versión Español México.',
+                description: 'Looney Tunes · Versión Español México.',
+                mediaUrl: 'https://www.youtube.com/embed/kDWeYbQBY_0?si=V6b7oqNMX-Mh28iV'
+            }
+        };
 
-        let libraryReturnFocus = null;
+        let libraryReturnFocus;
         let libraryScrollY = 0;
         let libraryBodyStyle = null;
         let libraryVideoWasPlaying = false;
+
+        let cinemaCatalogScroll = 0;
+        let cinemaCardFocus = null;
 
         function showHub() {
             if (libraryDialog.open) return;
@@ -2520,8 +2721,9 @@ background:
             libraryBodyStyle = document.body.getAttribute('style');
 
             const video = document.querySelector('#videoContainer video');
-            libraryVideoWasPlaying = !video.paused;
-            video.pause();
+
+            libraryVideoWasPlaying = Boolean(video && !video.paused);
+            video?.pause();
 
             Object.assign(document.body.style, {
                 position: 'fixed',
@@ -2533,24 +2735,27 @@ background:
 
             libraryDialog.classList.add('is-visible');
             libraryDialog.showModal();
+
             libraryDialog.querySelector('.btn-back-video').focus();
         }
 
         function showVideo() {
-            if (libraryDialog.open) libraryDialog.close();
+            closeModal();
+
+            if (libraryDialog.open) {
+                libraryDialog.close();
+            }
         }
 
         libraryDialog.addEventListener('cancel', event => {
-            if (libraryModal.classList.contains('is-active')) {
+            if (!document.getElementById('cinDetail').hidden) {
                 event.preventDefault();
-                closeModal();
+                closeCinemaDetail();
             }
         });
 
         libraryDialog.addEventListener('close', () => {
-            libraryModal.classList.remove('is-active');
-            document.getElementById('modalMediaContainer').innerHTML = '';
-
+            closeModal();
             libraryDialog.classList.remove('is-visible');
 
             if (libraryBodyStyle === null) {
@@ -2561,9 +2766,9 @@ background:
 
             window.scrollTo(0, libraryScrollY);
 
-            if (libraryReturnFocus) {
-                libraryReturnFocus.focus({ preventScroll: true });
-            }
+            libraryReturnFocus?.focus({
+                preventScroll: true
+            });
 
             if (libraryVideoWasPlaying) {
                 document.querySelector('#videoContainer video')
@@ -2572,58 +2777,134 @@ background:
             }
         });
 
-        /* REPRODUCTOR MULTIMEDIA */
-        function openModal(title, sub, text, mediaUrl, type) {
-            const container = document.getElementById('modalMediaContainer');
+        function openCinemaDetail(id) {
+            const item = cinemaItems[id];
 
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalText').textContent = text;
-            container.innerHTML = '';
+            cinemaCatalogScroll = libraryDialog.scrollTop;
+            cinemaCardFocus = document.activeElement;
 
-            if (type === 'youtube') {
-                container.innerHTML = `<iframe width="100%" height="100%" src="${mediaUrl}?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>`;
-            } else if (type === 'video') {
-                container.innerHTML = `<video controls autoplay style="width:100%; height:100%; object-fit:cover;"><source src="${mediaUrl}" type="video/mp4"></video>`;
-            } else {
-                container.innerHTML = `<img src="${mediaUrl}" style="width:100%; height:100%; object-fit:cover;">`;
-            }
+            document.getElementById('cinDetailTitle').textContent =
+                item.title;
 
-            document.getElementById('hboModal').classList.add('is-active');
+            document.getElementById('cinDetailCategory').textContent =
+                item.category + ' · En tu biblioteca';
+
+            document.getElementById('cinDetailSummary').textContent =
+                item.summary;
+
+            document.getElementById('cinDetailDescription').textContent =
+                item.description;
+
+            document.getElementById('cinDetailFormat').textContent =
+                item.category;
+
+            document.getElementById('cinDetailImage').src =
+                item.image;
+
+            document.getElementById('cinDetailPoster').src =
+                item.image;
+
+            document.getElementById('cinDetailPoster').alt =
+                item.title;
+
+            const play = document.getElementById('cinDetailPlay');
+
+            play.hidden = !item.mediaUrl;
+            play.onclick = () => playCinema(id);
+
+            document.getElementById('cinCatalog').hidden = true;
+            document.getElementById('cinDetail').hidden = false;
+
+            libraryDialog.scrollTop = 0;
+
+            document.getElementById('cinDetailTitle').focus({
+                preventScroll: true
+            });
+        }
+
+        function closeCinemaDetail() {
+            document.getElementById('cinDetail').hidden = true;
+            document.getElementById('cinCatalog').hidden = false;
+
+            libraryDialog.scrollTop = cinemaCatalogScroll;
+
+            cinemaCardFocus?.focus({
+                preventScroll: true
+            });
+        }
+
+        function playCinema(id) {
+            const item = cinemaItems[id];
+
+            if (!item.mediaUrl) return;
+
+            document.getElementById('cinPlayerTitle').textContent =
+                item.title;
+
+            const iframe = document.createElement('iframe');
+            const url = new URL(item.mediaUrl);
+
+            url.searchParams.set('autoplay', '1');
+            url.searchParams.set('start', '0');
+            url.searchParams.set('playsinline', '1');
+
+            iframe.src = url.href;
+            iframe.title = item.title + ' — reproductor de YouTube';
+
+            iframe.allow =
+                'accelerometer; autoplay; clipboard-write; ' +
+                'encrypted-media; gyroscope; picture-in-picture; web-share';
+
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            iframe.allowFullscreen = true;
+
+            document.getElementById('cinMedia').replaceChildren(iframe);
+
+            cinemaPlayer.showModal();
         }
 
         function closeModal() {
-            document.getElementById('hboModal').classList.remove('is-active');
+            document.getElementById('cinMedia').replaceChildren();
 
-            setTimeout(() => {
-                document.getElementById('modalMediaContainer').innerHTML = '';
-            }, 300);
-        }
-
-        function filterCategory(cat, ev) {
-            document.querySelectorAll('.hbo-tab').forEach(t => {
-                t.classList.remove('active');
-            });
-
-            if (ev && ev.target) {
-                ev.target.classList.add('active');
+            if (cinemaPlayer.open) {
+                cinemaPlayer.close();
             }
-
-            document.querySelectorAll('.hbo-row').forEach(row => {
-                row.style.display =
-                    (cat === 'all' || row.dataset.category === cat)
-                        ? 'block'
-                        : 'none';
-            });
         }
 
-        /* Detección automática de sección al hacer scroll */
+        cinemaPlayer.addEventListener('close', () => {
+            document.getElementById('cinMedia').replaceChildren();
+        });
+
+        function filterCategory(category, event) {
+            libraryDialog.querySelectorAll('.cin-filter').forEach(button => {
+                button.setAttribute(
+                    'aria-pressed',
+                    String(button === event.currentTarget)
+                );
+            });
+
+            let count = 0;
+
+            libraryDialog.querySelectorAll('.cin-card').forEach(card => {
+                card.hidden =
+                    category !== 'all' &&
+                    card.dataset.category !== category;
+
+                if (!card.hidden) count++;
+            });
+
+            document.getElementById('cinEmpty').hidden = count !== 0;
+        }
+
+        /* DETECCIÓN DE SECCIÓN AL HACER SCROLL */
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section[id]');
+
             const navLinks = document.querySelectorAll(
                 '.bottom-nav a[href^="#"]'
             );
 
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
@@ -2637,12 +2918,14 @@ background:
                         });
                     }
                 });
-            }, { threshold: 0.5 });
+            }, {
+                threshold: 0.5
+            });
 
             sections.forEach(section => observer.observe(section));
         });
 
-        /* ===== MODO JAPÓN ===== */
+        /* MODO JAPÓN */
         (function () {
             const JAPAN_DATE = new Date('2026-10-18T00:00:00');
             const JP_TITLE = 'いってらっしゃい';
@@ -2716,6 +2999,7 @@ background:
                     ctx.rotate(p.rot);
 
                     p.flip += p.vf;
+
                     ctx.scale(
                         1,
                         0.35 + 0.65 * Math.abs(Math.cos(p.flip))
@@ -2725,6 +3009,7 @@ background:
                     const grad = ctx.createLinearGradient(0, s, 0, -s);
 
                     grad.addColorStop(0, 'rgba(255,240,244,.95)');
+
                     grad.addColorStop(
                         1,
                         p.tone > 0.5
@@ -2769,10 +3054,12 @@ background:
                 if (reduceMotion) return;
 
                 resize();
+
                 petals = Array.from(
                     { length: 45 },
                     () => makePetal(true)
                 );
+
                 draw();
             }
 
