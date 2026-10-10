@@ -352,328 +352,6 @@
             cursor: pointer;
         }
 
-        /* 4. PALABRAS BONITAS */
-        .full-page-section {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-color);
-            z-index: 2000;
-            overflow-y: auto;
-            display: none;
-            opacity: 0;
-            transition: opacity .4s ease;
-        }
-
-        .full-page-section.is-active { display: block; opacity: 1; }
-
-        .full-page-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 30px;
-            background: rgba(255,255,255,.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,.08);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .book-viewport {
-            width: 100%;
-            min-height: calc(100vh - 70px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background-color: var(--page-bg);
-            overflow: hidden;
-        }
-
-        .book-header-title { font-weight: 700; font-size: 1.1rem; }
-
-        .btn-back {
-            background: rgba(0,0,0,.05);
-            border: 1px solid rgba(0,0,0,.1);
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        /* CARPETA UNIVERSITARIA */
-        .wrap {
-            min-height: 80vh;
-            padding: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.75rem;
-            width: 100%;
-        }
-
-        .stage {
-            --W: min(40vw, 460px, calc((100vh - 320px) * .75));
-            width: var(--W);
-            aspect-ratio: 3/4;
-            position: relative;
-            perspective: 1600px;
-            container-type: inline-size;
-            transition: transform .7s cubic-bezier(.6,.05,.2,1);
-        }
-
-        .stage.open { transform: translateX(calc(var(--W)/2)); }
-
-        .leaf {
-            position: absolute;
-            inset: 0;
-            transform-origin: left center;
-            transform-style: preserve-3d;
-            transition: transform .8s cubic-bezier(.5,.05,.2,1);
-        }
-
-        .leaf.f { transform: rotateY(-180deg); }
-
-        .face {
-            position: absolute;
-            inset: 0;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            overflow: hidden;
-        }
-
-        .bk { transform: rotateY(180deg); }
-
-        .pg {
-            border: .5px solid var(--border-strong);
-            border-radius: 1px 6px 6px 1px;
-            padding: 7cqi 6cqi 5cqi 15cqi;
-            font-family: 'Caveat', cursive;
-            font-size: 6cqi;
-            line-height: 7cqi;
-            color: var(--text-primary);
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent 12cqi,
-                    #E24B4A 12cqi,
-                    #E24B4A 12.4cqi,
-                    transparent 12.4cqi
-                ),
-                repeating-linear-gradient(
-                    transparent 0 6.8cqi,
-                    var(--border) 6.8cqi 7cqi
-                ) 0 9.5cqi/100% 100% no-repeat,
-                var(--surface-2);
-        }
-
-        .pg:before {
-            content: "";
-            position: absolute;
-            left: 3.2cqi;
-            top: 25.2cqi;
-            width: 3cqi;
-            height: 3cqi;
-            border-radius: 50%;
-            background: var(--surface-0);
-            box-shadow:
-                inset 0 .4cqi .6cqi rgba(0,0,0,.35),
-                0 40cqi 0 var(--surface-0),
-                0 80cqi 0 var(--surface-0);
-        }
-
-        .pg:after, .bk.pp:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 8cqi;
-            background: linear-gradient(90deg, rgba(0,0,0,.14), transparent);
-        }
-
-        .bk.pp {
-            border: .5px solid var(--border-strong);
-            border-radius: 6px 1px 1px 6px;
-            background: var(--surface-2);
-        }
-
-        .bk.pp:after {
-            left: auto;
-            right: 0;
-            background: linear-gradient(270deg, rgba(0,0,0,.14), transparent);
-        }
-
-        .pg h3 {
-            font-family: var(--font-sans);
-            font-size: 6.2cqi;
-            line-height: 8cqi;
-            font-weight: 500;
-            margin: 0 0 3cqi;
-        }
-
-        .pg p, .pg ul { margin: 0; }
-        .pg ul { padding-left: 5cqi; }
-
-        .ring {
-            border: .6cqi solid #D85A30;
-            border-radius: 2cqi;
-            padding: 0 1.5cqi;
-        }
-
-        .cover, .base, .inner {
-            position: absolute;
-            top: -3cqi;
-            bottom: -3cqi;
-            right: -3cqi;
-            left: 0;
-            padding: 3cqi;
-            background: #1c3a63;
-            border: .5px solid #0f2440;
-            border-radius: 2px 8px 8px 2px;
-        }
-
-        .inner {
-            transform: rotateY(180deg);
-            border-radius: 8px 2px 2px 8px;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .base { z-index: 0; }
-
-        .bd {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border: .4cqi dashed rgba(255,255,255,.22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lb {
-            background: #FAEEDA;
-            color: #412402;
-            width: 66%;
-            padding: 5cqi 4cqi;
-            border-radius: 1px;
-            transform: rotate(-1deg);
-        }
-
-        .lb b {
-            display: block;
-            font-family: var(--font-apple);
-            font-weight: 500;
-            font-size: 8cqi;
-            line-height: 1.1;
-            margin-bottom: 2cqi;
-        }
-
-        .lb span {
-            font-family: 'Caveat', cursive;
-            font-size: 6.4cqi;
-            display: block;
-            line-height: 1.15;
-        }
-
-        .bd em {
-            font-style: normal;
-            font-size: 12px;
-            color: #B5D4F4;
-            position: absolute;
-            bottom: 6cqi;
-        }
-
-        .hw {
-            position: absolute;
-            top: 0;
-            left: -13cqi;
-            width: 26cqi;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity .4s;
-        }
-
-        .stage.open .hw { opacity: 1; }
-        .hw.b { z-index: 1; }
-        .hw.t { z-index: 40; }
-
-        .tabs {
-            position: absolute;
-            left: calc(100% - 1cqi);
-            top: 8%;
-            display: flex;
-            flex-direction: column;
-            gap: 2cqi;
-            z-index: 60;
-        }
-
-        .tab {
-            all: unset;
-            cursor: pointer;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 9cqi;
-            height: 19cqi;
-            overflow: hidden;
-            white-space: nowrap;
-            border-radius: 0 2cqi 2cqi 0;
-            writing-mode: vertical-rl;
-            font: 500 clamp(8px, 2.8cqi, 15px)/1 var(--font-apple);
-            border: .5px solid rgba(0,0,0,.25);
-            border-left: 0;
-            transition: width .2s;
-        }
-
-        .tab:hover, .tab[aria-current=true] { width: 12cqi; }
-
-        .tab:focus-visible {
-            outline: 2px solid var(--text-accent);
-            outline-offset: 2px;
-        }
-
-        .row {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .row button {
-            font: 500 14px var(--font-apple);
-            color: var(--text-primary);
-            background: transparent;
-            border: .5px solid var(--border-strong);
-            border-radius: 8px;
-            padding: 8px 16px;
-            cursor: pointer;
-        }
-
-        .row button:hover { background: var(--border); }
-
-        .row button:focus-visible {
-            outline: 2px solid var(--text-accent);
-            outline-offset: 2px;
-        }
-
-        #ps { min-width: 9ch; text-align: center; }
-
-        @media (max-width: 520px) {
-            .stage { --W: min(38vw, calc((100vh - 320px) * .75)); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .leaf, .stage, .hw { transition: none; }
-        }
-
         /* FOOTER Y NAVEGACIÓN */
         .footer {
             width: 100%;
@@ -2245,6 +1923,9 @@
                     </div>
 
                     <div class="cin-grid">
+
+                        <!--DORA CINEMATIC POSTER-->
+
                         <button
                             class="cin-card"
                             data-category="series"
@@ -2262,6 +1943,8 @@
                             <small>Serie · Español México</small>
                         </button>
 
+                        <!--LOONEY TUNES CINEMATIC POSTER-->
+
                         <button
                             class="cin-card"
                             data-category="series"
@@ -2276,6 +1959,25 @@
                             </span>
 
                             <strong>Looney Tunes</strong>
+                            <small>Serie · Español México</small>
+                        </button>
+
+                        <!--Lilo & Stitch CINEMATIC POSTER-->
+
+                        <button
+                            class="cin-card"
+                            data-category="series"
+                            onclick="openCinemaDetail('lilo')"
+                        >
+                            <span class="cin-poster">
+                                <img
+                                    src="posters/6920e47a8096c6f8e3e1b282dcf8515e.jpg"
+                                    alt=""
+                                    loading="lazy"
+                                >
+                            </span>
+
+                            <strong>Lilo & Stitch</strong>
                             <small>Serie · Español México</small>
                         </button>
                     </div>
@@ -2432,255 +2134,16 @@
         </div>
     </section>
 
-    <!-- 4. PALABRAS BONITAS -->
-    <section class="hero" id="palabras-bonitas">
-        <div class="hero__container">
-            <img
-                src="imagenes/IMG_1892.jpg"
-                alt="Palabras"
-                class="hero__img"
-            >
-
-            <div class="hero__overlay"></div>
-
-            <div class="hero-content">
-                <h1>Palabras Bonitas</h1>
-                <p>Vocabulario y expresiones en español.</p>
-
-                <button
-                    class="btn-open-hub"
-                    style="margin-top: 20px;"
-                    onclick="openPalabrasPage()"
-                >Abrir Carpeta</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- CARPETA UNIVERSITARIA 3D -->
-    <div id="palabras-page" class="full-page-section">
-        <header class="full-page-header">
-            <button class="btn-back" onclick="closePalabrasPage()">
-                ← Volver al Menú
-            </button>
-
-            <span class="book-header-title">Palabras Bonitas</span>
-            <div></div>
-        </header>
-
-        <main class="book-viewport">
-            <div class="wrap">
-                <div class="stage" id="st">
-                    <div class="base">
-                        <div class="bd">
-                            <em>Loose sheets go here</em>
-                        </div>
-                    </div>
-
-                    <svg
-                        class="hw b"
-                        viewBox="0 0 26 133.3"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                    >
-                        <defs>
-                            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0" stop-color="#8c6a1c"/>
-                                <stop offset=".3" stop-color="#f4dc86"/>
-                                <stop offset=".55" stop-color="#b58d2e"/>
-                                <stop offset=".8" stop-color="#f7e59f"/>
-                                <stop offset="1" stop-color="#9a772a"/>
-                            </linearGradient>
-                        </defs>
-
-                        <rect
-                            x="10.5"
-                            y="8"
-                            width="5"
-                            height="117.3"
-                            rx="1"
-                            fill="url(#g)"
-                            stroke="#6b5115"
-                            stroke-width=".3"
-                        />
-
-                        <g fill="none" stroke="#6b5115" stroke-width="1.4">
-                            <ellipse cx="13" cy="26.7" rx="10" ry="3.6"/>
-                            <ellipse cx="13" cy="66.7" rx="10" ry="3.6"/>
-                            <ellipse cx="13" cy="106.7" rx="10" ry="3.6"/>
-                        </g>
-
-                        <g fill="#6b5115">
-                            <circle cx="13" cy="15" r=".8"/>
-                            <circle cx="13" cy="118" r=".8"/>
-                        </g>
-                    </svg>
-
-                    <svg
-                        class="hw t"
-                        viewBox="0 0 26 133.3"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                    >
-                        <g
-                            fill="none"
-                            stroke="url(#g)"
-                            stroke-width="1.3"
-                            stroke-linecap="round"
-                        >
-                            <path d="M3 26.7A10 3.6 0 0 0 23 26.7"/>
-                            <path d="M3 66.7A10 3.6 0 0 0 23 66.7"/>
-                            <path d="M3 106.7A10 3.6 0 0 0 23 106.7"/>
-                        </g>
-
-                        <g
-                            fill="url(#g)"
-                            stroke="#6b5115"
-                            stroke-width=".25"
-                        >
-                            <rect x="11" y="24.5" width="4" height="4.4" rx=".8"/>
-                            <rect x="11" y="64.5" width="4" height="4.4" rx=".8"/>
-                            <rect x="11" y="104.5" width="4" height="4.4" rx=".8"/>
-                        </g>
-                    </svg>
-
-                    <div class="tabs" id="tb"></div>
-                </div>
-
-                <div class="row">
-                    <button id="pv">Back</button>
-                    <span id="ps" aria-live="polite">Closed</span>
-                    <button id="nx">Open binder</button>
-                </div>
-            </div>
-        </main>
-    </div>
-
     <footer class="footer">
         <p>© 2026 Anni. All Rights Reserved.</p>
     </footer>
 
-    <nav class="bottom-nav">
-        <a href="#home" class="nav-item active">Inicio</a>
-        <a href="#mis-cosas" class="nav-item">Mein Bunchhändler</a>
-        <a href="#Guadalajara" class="nav-item">Guadalajara</a>
-        <a href="#palabras-bonitas" class="nav-item">Palabras Bonitas</a>
-    </nav>
-
+<nav class="bottom-nav">
+    <a href="#home" class="nav-item active">Inicio</a>
+    <a href="#mis-cosas" class="nav-item">Mein Bunchhändler</a>
+    <a href="#Guadalajara" class="nav-item">Guadalajara</a>
+</nav>
         <script>
-        /* CARPETA UNIVERSITARIA */
-        const pages = [
-            {
-                front: `<div class="cover"><div class="bd"><div class="lb"><b>Semester 3</b><span>Coursework and notes</span><span>Keep this one dry.</span></div></div></div>`,
-                back: `<div class="inner"><div class="bd"><em>Pocket for loose sheets</em></div></div>`
-            },
-            {
-                tab: ['Week', '#FAC775', '#412402'],
-                front: `<div class="face pg"><h3>This week</h3><ul><li>Mon: Calculus 9:00</li><li>Tue: Chem lab 14:00</li><li>Wed: Literature seminar</li><li>Thu: Calculus, library</li><li>Fri: Chem lecture 11:00</li></ul></div>`
-            },
-            {
-                tab: ['Calculus', '#9FE1CB', '#04342C'],
-                front: `<div class="face pg"><h3>Calculus: limits</h3><p>A limit is where f(x) is heading, not where it lands.</p><br><p><span class="ring">Squeeze theorem: trapped between two functions, it must follow them.</span></p><br><p>Review epsilon-delta</p></div>`
-            },
-            {
-                tab: ['Literature', '#F5C4B3', '#4A1B0C'],
-                front: `<div class="face pg"><h3>Literature: seminar</h3><ul><li>Read chapters 4 to 6</li><li>Who tells the story? Can we trust them?</li><li>Bring one quote to argue about</li></ul><br><p><span class="ring">Essay outline due Friday</span></p></div>`
-            }
-        ];
-
-        const stage = document.getElementById('st');
-        const tabsEl = document.getElementById('tb');
-        const label = document.getElementById('ps');
-        const prev = document.getElementById('pv');
-        const next = document.getElementById('nx');
-        const N = pages.length;
-
-        let current = 0;
-
-        pages.forEach((p, i) => {
-            const leaf = document.createElement('div');
-            leaf.className = 'leaf';
-
-            leaf.innerHTML =
-                p.front +
-                (p.back || '<div class="face bk pp" aria-hidden="true"></div>');
-
-            stage.insertBefore(leaf, tabsEl);
-
-            if (p.tab) {
-                const b = document.createElement('button');
-
-                b.className = 'tab';
-                b.textContent = p.tab[0];
-                b.style.background = p.tab[1];
-                b.style.color = p.tab[2];
-                b.dataset.i = i;
-                b.onclick = () => go(i);
-
-                tabsEl.appendChild(b);
-            }
-        });
-
-        const leaves = [...stage.querySelectorAll('.leaf')];
-
-        function go(n) {
-            current = Math.max(0, Math.min(N, n));
-            render();
-        }
-
-        function render() {
-            leaves.forEach((el, i) => {
-                const flipped = i < current;
-
-                el.classList.toggle('f', flipped);
-                el.style.zIndex = flipped ? i + 2 : N - i + 2;
-            });
-
-            stage.classList.toggle('open', current > 0);
-
-            tabsEl.querySelectorAll('.tab').forEach(t => {
-                t.setAttribute(
-                    'aria-current',
-                    String(+t.dataset.i === current - 1)
-                );
-            });
-
-            label.textContent =
-                current === 0
-                    ? 'Closed'
-                    : `Page ${current} of ${N - 1}`;
-
-            next.textContent =
-                current === 0
-                    ? 'Open binder'
-                    : (current === N - 1 ? 'Close' : 'Flip page');
-        }
-
-        prev.onclick = () => go(current - 1);
-        next.onclick = () => go(current === N - 1 ? 0 : current + 1);
-
-        addEventListener('keydown', e => {
-            if (document.getElementById('hboHub').open) return;
-
-            if (e.key === 'ArrowRight') go(current + 1);
-            if (e.key === 'ArrowLeft') go(current - 1);
-        });
-
-        render();
-
-        /* PALABRAS BONITAS */
-        function openPalabrasPage() {
-            document.getElementById('palabras-page')
-                .classList.add('is-active');
-
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePalabrasPage() {
-            document.getElementById('palabras-page')
-                .classList.remove('is-active');
-
-            document.body.style.overflow = '';
-        }
 
         /* BIBLIOTECA MULTIMEDIA */
         const libraryDialog = document.getElementById('hboHub');
@@ -2702,7 +2165,18 @@
                 summary: 'Versión Español México.',
                 description: 'Looney Tunes · Versión Español México.',
                 mediaUrl: 'https://www.youtube.com/embed/kDWeYbQBY_0?si=V6b7oqNMX-Mh28iV'
+            },
+            lilo: {
+                title: 'Lilo & Stitch',
+                category: 'Serie',
+                image: 'posters/6920e47a8096c6f8e3e1b282dcf8515e.jpg',
+                summary: 'Versión Español México.',
+                description: 'Lilo & Stitch · Versión Español México.',
+                mediaUrl: 'https://www.youtube.com/embed/YfYGtFmMyGI?si=o2bYPsktg-azfMdT'
             }
+
+
+
         };
 
         let libraryReturnFocus;
