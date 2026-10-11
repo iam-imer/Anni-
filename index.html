@@ -2044,8 +2044,79 @@
     border-radius: 0 !important;
     box-shadow: none !important;
 }
+/* REVERSO DEL PASE — MENSAJE CENTRADO */
+.pass__face.pass__back {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 22px 18px 14px;
+    text-align: center;
+}
 
+.pass__back .pass__msg {
+    align-self: center;
+    justify-self: center;
 
+    width: 100%;
+    max-width: 290px;
+    margin: 0;
+
+    font-family: "Baskerville", "Palatino Linotype",
+                 "Book Antiqua", Georgia, serif;
+    font-size: clamp(15px, 2.2vw, 17px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: .01em;
+    text-wrap: balance;
+
+    color: #fff5e7;
+    text-shadow: 0 1px 2px rgba(50, 0, 15, .12);
+}
+
+.pass__back .pass__msg span {
+    display: block;
+}
+
+.pass__back .pass__closing {
+    margin-top: 12px;
+}
+
+.pass__back .pass__hint {
+    position: static;
+    margin: 0;
+    text-align: center;
+
+    font-family: var(--font-apple);
+    font-size: 9px;
+    font-style: normal;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .65;
+}
+.pass__face.pass__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 18px;
+    text-align: center;
+}
+
+.pass__back .pass__msg {
+    width: 100%;
+    max-width: 290px;
+    margin: 0;
+    text-align: center;
+}
+
+.pass__back .pass__hint {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
 
         </style>
 </head>
@@ -2066,7 +2137,7 @@
             <div class="hero-content">
                 <h1 id="heroTitle">Hola, Anni</h1>
 
-                <p id="heroText">Cada sección dentro de esta página esta diseñado especialmente pensando en ti, disfruta cada clic.</p>
+                <p id="heroText">Todas las secciones de esta página estan diseñadas especialmente para ti, disfruta cada clic.</p>
 
                 <p class="japan-count" id="japanCount" hidden></p>
 
@@ -2125,10 +2196,17 @@
                         </div>
                     </div>
 
-                    <div class="pass__face pass__back">
-                        <div class="pass__msg">Dios cuide de tí a donde quiera que tus pies te lleven.</div>
-                        <div class="pass__hint">toca para voltear</div>
-                    </div>
+                   <div class="pass__face pass__back">
+    <div class="pass__msg">
+        <span>I'm very excited about you and Japan,</span>
+        <span>may God bless you on your journey.</span>
+        <span class="pass__closing">
+            I wait for you when you come back :)
+        </span>
+    </div>
+
+    <div class="pass__hint">toca para voltear</div>
+</div>
                 </div>
             </div>
 
@@ -2234,13 +2312,13 @@
                         onclick="showHub()"
                         aria-haspopup="dialog"
                         aria-controls="hboHub"
-                    >Mein Bunchhändler</button>
+                    >Mein Unterhaltung</button>
                 </h2>
 
-                <p class="video-desc">Hice una recopilación de algunas de las peliculas, series y algunos videos en Español que podrían gustarte. Ah, y por supuesto que tú video tambien esta.</p>
+                <p class="video-desc">Series infantiles en Español que podrían gustarte.</p>
 
                 <button class="btn-open-hub" onclick="showHub()">
-                    Explorar Biblioteca
+                    Explorar
                 </button>
             </div>
         </div>
@@ -2257,7 +2335,7 @@
                 </button>
 
                 <div class="cin-brand" id="hubTitle">
-                    Mein Bunchhändler
+                     Unterhaltung
                     <span>La biblioteca de Anni</span>
                 </div>
 
@@ -2296,12 +2374,7 @@
                                 ▶ Reproducir
                             </button>
 
-                            <button
-                                class="cin-secondary"
-                                onclick="openCinemaDetail('dora')"
-                            >
-                                Ver ficha ↗
-                            </button>
+                           
                         </div>
                     </div>
                 </div>
@@ -2318,17 +2391,6 @@
                             role="group"
                             aria-label="Filtrar colección"
                         >
-                            <button
-                                class="cin-filter"
-                                aria-pressed="true"
-                                onclick="filterCategory('all', event)"
-                            >Todo</button>
-
-                            <button
-                                class="cin-filter"
-                                aria-pressed="false"
-                                onclick="filterCategory('cine', event)"
-                            >Películas</button>
 
                             <button
                                 class="cin-filter"
@@ -2477,7 +2539,7 @@
 
             <footer class="cin-foot">
                 <span>Seleccionado para Anni.</span>
-                <span>Mein Bunchhändler</span>
+                <span>Mein Unterhaltung</span>
             </footer>
         </dialog>
 
@@ -2571,8 +2633,8 @@
 
 <nav class="bottom-nav">
     <a href="#home" class="nav-item active">Inicio</a>
-    <a href="#mis-cosas" class="nav-item">Mein Bunchhändler</a>
-    <a href="#Guadalajara" class="nav-item">Guadalajara</a>
+    <a href="#mis-cosas" class="nav-item">Mein Unterhaltung</a>
+    <a href="#Guadalajara" class="nav-item">Anni</a>
 </nav>
         <script>
 
@@ -3058,8 +3120,8 @@
             </h1>
 
             <p>
-                Hay cosas que una fotografía guarda.<br>
-                Y otras que me recuerda.
+                Cuando la idea de una página sobre ti estaba tomando forma, una de las cosas mas importantes que pasaron por mi mente fué: ¿que significa Annika?. Creo que las siguientes fotografías son mi forma de responderla :) <br>
+Disfruta.
             </p>
 
             <span class="bonita-scroll" aria-hidden="true">↓</span>
@@ -3116,19 +3178,19 @@ const bonitaConfig = {
         {
             src: 'fotos/IMG_8706.jpg',
             alt: 'Anni Prime Minister of Ice Cream Relations',
-            caption: 'Si, desde el primer día de mi gobierno habrá para todos, helados gratis los Martes',
+            caption: 'Si, desde el primer día de mi gobierno habrá helados gratis los Martes',
             note: 'Reuters'
         },
         {
             src: 'fotos/20240915_113201_Original.jpg',
             alt: 'Fotografía 5 de Anni',
-            caption: 'Es muy facil',
+            caption: 'Sueña en grande',
             note: 'Tomada en Septiembre 2024'
         },
         {
             src: 'fotos/IMG_6889.JPG',
             alt: 'Ojos',
-            caption: 'Esta es una foto que siempre recuerdo, y solo me hace pensar que es tan sencillo pasar el tiempo contigo',
+            caption: 'Esta es una foto que siempre tengo en mi mente, y solo me hace pensar que es tan sencillo pasar el tiempo contigo',
             note: 'Tomada en Marzo 2026'
         },
         {
@@ -3140,7 +3202,7 @@ const bonitaConfig = {
         {
             src: 'fotos/IMG_9562.jpg',
             alt: 'Sesión de Uñas',
-            caption: 'Verte sonreir no tiene precio',
+            caption: 'Verte sonreir, ufffff',
             note: 'Tomada en Agosto 2026'
         }
     ]
