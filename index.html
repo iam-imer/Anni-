@@ -1629,10 +1629,426 @@
             outline: 2px solid #ead8b5;
             outline-offset: 3px;
         }
-    </style>
+
+        /* BONITA */
+.bonita-entry {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bonita-entry:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+}
+
+#bonitaDialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #f3f0e9;
+    color: #263b50;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    font-family: var(--font-apple);
+}
+
+#bonitaDialog::backdrop {
+    background: #f3f0e9;
+}
+
+#bonitaDialog .bonita-nav {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 5vw;
+    background: #f3f0e9f2;
+    border-bottom: 1px solid #263b501a;
+}
+
+#bonitaDialog .bonita-nav span {
+    font-size: 12px;
+    letter-spacing: .08em;
+}
+
+#bonitaDialog button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#bonitaDialog button:focus-visible,
+#bonitaDialog summary:focus-visible {
+    outline: 2px solid #426487;
+    outline-offset: 5px;
+}
+
+#bonitaClose {
+    border: 1px solid #263b5040;
+    border-radius: 4px;
+    background: transparent;
+    padding: 9px 16px;
+    color: inherit;
+}
+
+#bonitaDialog .bonita-content {
+    max-width: 1150px;
+    margin: auto;
+    padding: 0 6vw;
+}
+
+#bonitaDialog .bonita-intro {
+    text-align: center;
+    padding: 85px 0 50px;
+}
+
+#bonitaDialog .bonita-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    font-size: 10px;
+    margin-bottom: 22px;
+}
+
+#bonitaTitle {
+    font-family: Georgia, serif;
+    font-size: clamp(70px, 13vw, 145px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.065em;
+}
+
+#bonitaTitle span {
+    display: block;
+    font: italic 20px Georgia, serif;
+    letter-spacing: 0;
+    margin: 20px 0 35px;
+}
+
+#bonitaDialog .bonita-intro > p:last-of-type {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #63717a;
+}
+
+#bonitaDialog .bonita-scroll {
+    display: block;
+    margin-top: 35px;
+    font-size: 25px;
+}
+
+/* GALERÍA */
+#bonitaDialog .bonita-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 70px 40px;
+    align-items: start;
+}
+
+#bonitaDialog figure {
+    margin: 0;
+    min-width: 0;
+}
+
+#bonitaDialog figure:nth-child(1),
+#bonitaDialog figure:nth-child(5),
+#bonitaDialog figure:nth-child(10) {
+    grid-column: 1 / -1;
+}
+
+#bonitaDialog figure:nth-child(3),
+#bonitaDialog figure:nth-child(7),
+#bonitaDialog figure:nth-child(9) {
+    margin-top: 80px;
+}
+
+#bonitaDialog .bonita-frame {
+    aspect-ratio: 4 / 5;
+    background:
+        radial-gradient(
+            ellipse at 30% 20%,
+            #ffffff90,
+            transparent 60%
+        ),
+        linear-gradient(145deg, #d6e0e3, #a9bdca);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+#bonitaDialog figure:nth-child(even) .bonita-frame {
+    background: linear-gradient(145deg, #e7dfd2, #cfc4b3);
+}
+
+#bonitaDialog figure:nth-child(1) .bonita-frame,
+#bonitaDialog figure:nth-child(5) .bonita-frame {
+    aspect-ratio: 3 / 2;
+}
+
+#bonitaDialog figure:nth-child(10) {
+    width: 75%;
+    justify-self: center;
+}
+
+#bonitaDialog .bonita-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#bonitaDialog .bonita-placeholder {
+    text-align: center;
+    color: #263b5080;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+#bonitaDialog .bonita-placeholder b {
+    display: block;
+    font: italic 65px Georgia, serif;
+    margin-bottom: 12px;
+}
+
+#bonitaDialog figcaption {
+    padding-top: 18px;
+    font: italic 20px/1.5 Georgia, serif;
+}
+
+#bonitaDialog details {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #62717e;
+}
+
+#bonitaDialog summary {
+    cursor: pointer;
+    width: fit-content;
+}
+
+#bonitaDialog details p {
+    padding-top: 10px;
+}
+
+/* VIDEO Y CIERRE */
+#bonitaDialog .bonita-finale {
+    text-align: center;
+    padding: 100px 0 60px;
+}
+
+#bonitaDialog .bonita-finale h2 {
+    font: 400 clamp(28px, 5vw, 46px)/1.2 Georgia, serif;
+    margin-bottom: 30px;
+}
+
+#bonitaDialog .bonita-video {
+    aspect-ratio: 16 / 9;
+    background: #20374b;
+    display: grid;
+    place-items: center;
+}
+
+#bonitaPlay {
+    padding: 14px 22px;
+    border: 1px solid #eee7d9;
+    border-radius: 4px;
+    background: #eee7d9;
+    color: #263b50;
+}
+
+#bonitaPlay:disabled {
+    cursor: default;
+    opacity: .65;
+}
+
+#bonitaDialog iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#bonitaDialog .bonita-signature {
+    margin-top: 65px;
+    font: italic 34px Georgia, serif;
+}
+
+@media (max-width: 600px) {
+    #bonitaDialog .bonita-intro {
+        padding-top: 55px;
+    }
+
+    #bonitaDialog .bonita-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #bonitaDialog figure:nth-child(n) {
+        grid-column: 1;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    #bonitaDialog .bonita-finale {
+        padding-top: 70px;
+    }
+}
+
+/* BONITA — FOTOGRAFÍAS COMPLETAS, SIN TARJETAS */
+
+#bonitaDialog .bonita-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+#bonitaDialog .bonita-grid > figure:nth-child(n) {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+#bonitaDialog .bonita-grid .bonita-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+}
+
+/* Conserva proporción y muestra la imagen completa. */
+#bonitaDialog .bonita-frame img,
+#bonitaDialog .bonita-frame video {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+
+    max-height: 78vh;
+    max-height: 78dvh;
+
+    margin: 0 auto;
+    object-fit: contain;
+    border: 0;
+    border-radius: 0;
+}
+
+#bonitaDialog .bonita-frame video {
+    background: #182a3a;
+}
+
+#bonitaDialog .bonita-grid figcaption {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-top: 22px;
+    text-align: center;
+}
+
+#bonitaDialog .bonita-grid details {
+    max-width: 760px;
+    margin: 12px auto 0;
+}
+
+#bonitaDialog .bonita-local-play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    max-width: 100%;
+    padding: 16px 24px;
+
+    background: #20374b;
+    color: #f3f0e9;
+    border: 1px solid #20374b;
+    border-radius: 5px;
+
+    font: 500 14px/1.4 var(--font-apple);
+    cursor: pointer;
+}
+
+#bonitaDialog .bonita-media-status {
+    padding: 20px;
+    color: #62717e;
+    font-size: 13px;
+    text-align: center;
+}
+
+#bonitaDialog .bonita-frame:has(.bonita-local-play) {
+    padding: 30px 0;
+}
+
+@media (max-width: 650px) {
+    #bonitaDialog .bonita-grid {
+        gap: 48px;
+    }
+}
+/* BONITA — SIN TARJETAS EN ESTAS TRES FOTOGRAFÍAS */
+
+#bonitaDialog figure:has(img[src="fotos/IMG_8706.jpg"]),
+#bonitaDialog figure:has(img[src="fotos/IMG_6889.JPG"]),
+#bonitaDialog figure:has(img[src="fotos/IMG_9562.jpg"]),
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_8706.jpg"]),
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_6889.JPG"]),
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_9562.jpg"]) {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_8706.jpg"]),
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_6889.JPG"]),
+#bonitaDialog .bonita-frame:has(img[src="fotos/IMG_9562.jpg"]) {
+    padding: 0 !important;
+}
+
+#bonitaDialog img[src="fotos/IMG_8706.jpg"],
+#bonitaDialog img[src="fotos/IMG_6889.JPG"],
+#bonitaDialog img[src="fotos/IMG_9562.jpg"] {
+    display: block;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 78vh;
+    max-height: 78dvh;
+    margin: 0 auto;
+
+    object-fit: contain !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+
+
+        </style>
 </head>
-
-
 <body>
     <!-- 1. INICIO -->
     <section class="hero" id="home">
@@ -2097,11 +2513,11 @@
                     <div class="grid-item__content">
                         <h2><h2>
                             <a href="https://www.polarsteps.com/ImerMartinez/27765382-instantes-con-annika-en-mexico-y-el-mundo?mode=track">
-                                Anni por en el Mundo
+                                Mis recuerdos
                             </a>
                         </h2>
 
-                        <p>Un recorrido por la ciudad en la que un día estuviste</p>
+                        <p>Revive los momentos y las historias que acompañan a cada fotografía </p>
                     </div>
                 </div>
 
@@ -2113,8 +2529,15 @@
                     >
 
                     <div class="grid-item__content">
-                        <h2>Cultura & Arte</h2>
-                        <p>Arquitectura e historia.</p>
+                        <div class="grid-item__content">
+    <h2>
+        <a href="https://boxofgoodies.littleweb.world/p/3MKvTaxm">
+            Caja Mágica
+        </a>
+    </h2>
+
+    <p>Tranqui, yo sé que dan ansias pero tienes que ser paciente :)</p>
+</div>
                     </div>
                 </div>
 
@@ -2126,7 +2549,15 @@
                     >
 
                     <div class="grid-item__content">
-                        <h2>Bonita</h2>
+                    <h2>
+                    <button
+                    type="button"
+                    class="bonita-entry"
+                    id="bonitaOpen"
+                    aria-haspopup="dialog"
+                    aria-controls="bonitaDialog"
+                    >Bonita</button>
+                    </h2>
                         <p>Those hypno blues</p>
                     </div>
                 </div>
@@ -2604,5 +3035,428 @@
             });
         })();
     </script>
+
+<!-- BONITA: GALERÍA INDEPENDIENTE -->
+<dialog id="bonitaDialog" aria-labelledby="bonitaTitle">
+    <header class="bonita-nav">
+        <span>Those hypno blues</span>
+
+        <button type="button" id="bonitaClose">
+            Cerrar ×
+        </button>
+    </header>
+
+    <main class="bonita-content">
+        <div class="bonita-intro">
+            <p class="bonita-eyebrow">
+                Una pequeña colección de ti
+            </p>
+
+            <h1 id="bonitaTitle">
+                Bonita
+                <span>Those hypno blues</span>
+            </h1>
+
+            <p>
+                Hay cosas que una fotografía guarda.<br>
+                Y otras que me recuerda.
+            </p>
+
+            <span class="bonita-scroll" aria-hidden="true">↓</span>
+        </div>
+
+        <!-- El script coloca aquí tus fotografías y videos -->
+        <div id="bonitaPhotos" class="bonita-grid"></div>
+
+        <section
+            class="bonita-finale"
+            aria-labelledby="bonitaVideoTitle"
+        >
+            <p class="bonita-eyebrow">Un último momento</p>
+
+            <h2 id="bonitaVideoTitle">
+                Hay algo más para ti.
+            </h2>
+
+            <div id="bonitaVideo" class="bonita-video">
+                <button type="button" id="bonitaPlay" disabled>
+                    Video próximamente
+                </button>
+            </div>
+
+            <p class="bonita-signature">Así te veo.</p>
+        </section>
+    </main>
+</dialog>
+
+ <script>
+/* BONITA — FOTOGRAFÍAS Y VIDEOS */
+const bonitaConfig = {
+    youtubeId: '0EBddzRwyb4',
+
+    photos: [
+        {
+            src: 'fotos/IMG_8773.jpg',
+            alt: 'Anni Hermosa Atardecer',
+            caption: 'Si, con los rayos del sol de las tardes eres aún más bonita todavia ;)',
+            note: 'Tomada en Agosto 2026'
+        },
+        {
+            src: 'fotos/20240915_115446(1)_Original.jpg',
+            alt: 'Anni Blue',
+            caption: 'Azul, todo es azul y luego esta tú',
+            note: 'Tomada en Septiembre 2024'
+        },
+        {
+            src: 'videos/bonita1000.mp4',
+            alt: 'Anni en movimiento',
+            caption: 'Tarde se me hacia por volver a verte',
+            note: 'Tomada en Agosto 2026'
+        },
+        {
+            src: 'fotos/IMG_8706.jpg',
+            alt: 'Anni Prime Minister of Ice Cream Relations',
+            caption: 'Si, desde el primer día de mi gobierno habrá para todos, helados gratis los Martes',
+            note: 'Reuters'
+        },
+        {
+            src: 'fotos/20240915_113201_Original.jpg',
+            alt: 'Fotografía 5 de Anni',
+            caption: 'Es muy facil',
+            note: 'Tomada en Septiembre 2024'
+        },
+        {
+            src: 'fotos/IMG_6889.JPG',
+            alt: 'Ojos',
+            caption: 'Esta es una foto que siempre recuerdo, y solo me hace pensar que es tan sencillo pasar el tiempo contigo',
+            note: 'Tomada en Marzo 2026'
+        },
+        {
+            src: 'videos/sunshine.mp4',
+            alt: 'Fotografía 7 de Anni',
+            caption: '',
+            note: ''
+        },
+        {
+            src: 'fotos/IMG_9562.jpg',
+            alt: 'Sesión de Uñas',
+            caption: 'Verte sonreir no tiene precio',
+            note: 'Tomada en Agosto 2026'
+        }
+    ]
+};
+
+(() => {
+    const dialog = document.getElementById('bonitaDialog');
+    const gallery = document.getElementById('bonitaPhotos');
+    const videoBox = document.getElementById('bonitaVideo');
+    const play = document.getElementById('bonitaPlay');
+
+    const localPlayers = [];
+
+    let built = false;
+    let returnFocus;
+    let pageScrollY = 0;
+    let bodyStyle = null;
+    let resumeVideo = false;
+
+    /* PAUSA LOS VIDEOS LOCALES QUE QUEDAN FUERA DE VISTA */
+    const visibilityObserver =
+        'IntersectionObserver' in window
+            ? new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        entry.target.querySelector('video')?.pause();
+                    }
+                });
+            }, {
+                root: dialog,
+                threshold: 0
+            })
+            : null;
+
+    function resetYouTube() {
+        if (videoBox && play) {
+            videoBox.replaceChildren(play);
+        }
+    }
+
+    function releaseLocalVideo(record) {
+        const video = record.video;
+
+        if (!video) return;
+
+        video.pause();
+        video.removeAttribute('src');
+
+        // Reinicia el elemento y libera el recurso multimedia.
+        video.load();
+        video.remove();
+
+        record.video = null;
+        record.frame.replaceChildren(record.button);
+    }
+
+    function releaseOtherVideos(except = null) {
+        localPlayers.forEach(record => {
+            if (record !== except) {
+                releaseLocalVideo(record);
+            }
+        });
+    }
+
+    function createLocalVideo(frame, item) {
+        const button = document.createElement('button');
+
+        button.type = 'button';
+        button.className = 'bonita-local-play';
+        button.textContent = '▶ Reproducir video';
+        button.setAttribute(
+            'aria-label',
+            `Reproducir video: ${item.alt}`
+        );
+
+        const record = {
+            frame,
+            button,
+            video: null
+        };
+
+        localPlayers.push(record);
+        frame.append(button);
+        visibilityObserver?.observe(frame);
+
+        button.addEventListener('click', () => {
+            releaseOtherVideos(record);
+            resetYouTube();
+
+            const video = document.createElement('video');
+
+            video.controls = true;
+            video.playsInline = true;
+            video.preload = 'none';
+            video.setAttribute('playsinline', '');
+            video.setAttribute('aria-label', item.alt);
+
+            record.video = video;
+            frame.replaceChildren(video);
+
+            video.addEventListener('play', () => {
+                releaseOtherVideos(record);
+                resetYouTube();
+            });
+
+            video.addEventListener('error', () => {
+                // Ignora eventos de un reproductor ya retirado.
+                if (record.video !== video) return;
+
+                releaseLocalVideo(record);
+
+                const message = document.createElement('p');
+                message.className = 'bonita-media-status';
+                message.setAttribute('role', 'status');
+                message.textContent =
+                    'No se pudo reproducir este video. ' +
+                    'Puedes volver a intentarlo.';
+
+                frame.append(message);
+            }, { once: true });
+
+            // El archivo se asigna únicamente tras el clic.
+            video.src = item.src;
+
+            video.play().catch(() => {
+                // Si el navegador bloquea el inicio, quedan
+                // disponibles sus controles de reproducción.
+            });
+        });
+    }
+
+    function createImage(frame, item, index) {
+        const img = document.createElement('img');
+
+        img.alt = item.alt;
+        img.loading = index === 0 ? 'eager' : 'lazy';
+        img.decoding = 'async';
+
+        // Opcional: admite versiones de diferentes resoluciones.
+        if (item.srcset) {
+            img.sizes = '(min-width: 1150px) 1012px, 88vw';
+            img.srcset = item.srcset;
+        }
+
+        img.addEventListener('error', () => {
+            const message = document.createElement('p');
+
+            message.className = 'bonita-media-status';
+            message.textContent =
+                `No se pudo cargar la fotografía ${index + 1}.`;
+
+            frame.replaceChildren(message);
+        }, { once: true });
+
+        img.src = item.src;
+        frame.append(img);
+    }
+
+    function buildGallery() {
+        if (built) return;
+
+        const fragment = document.createDocumentFragment();
+
+        bonitaConfig.photos.forEach((item, index) => {
+            const figure = document.createElement('figure');
+            const frame = document.createElement('div');
+
+            frame.className = 'bonita-frame';
+
+            const src = item.src.trim();
+            const isVideo = /\.mp4(?:[?#].*)?$/i.test(src);
+
+            if (!src) {
+                const message = document.createElement('p');
+                message.className = 'bonita-media-status';
+                message.textContent = 'Un recuerdo próximamente.';
+                frame.append(message);
+            } else if (isVideo) {
+                createLocalVideo(frame, item);
+            } else {
+                createImage(frame, item, index);
+            }
+
+            figure.append(frame);
+
+            if (item.caption) {
+                const caption = document.createElement('figcaption');
+                caption.textContent = item.caption;
+                figure.append(caption);
+            }
+
+            if (item.note) {
+                const details = document.createElement('details');
+                const summary = document.createElement('summary');
+                const note = document.createElement('p');
+
+                summary.textContent = 'Algo que recuerdo';
+                note.textContent = item.note;
+
+                details.append(summary, note);
+                figure.append(details);
+            }
+
+            fragment.append(figure);
+        });
+
+        gallery.append(fragment);
+        built = true;
+    }
+
+    /* ABRIR BONITA */
+    document.getElementById('bonitaOpen')
+        .addEventListener('click', () => {
+            if (dialog.open) return;
+
+            returnFocus = document.activeElement;
+            pageScrollY = window.scrollY;
+            bodyStyle = document.body.getAttribute('style');
+
+            const backgroundVideo =
+                document.querySelector('#videoContainer video');
+
+            resumeVideo = Boolean(
+                backgroundVideo && !backgroundVideo.paused
+            );
+
+            backgroundVideo?.pause();
+
+            Object.assign(document.body.style, {
+                position: 'fixed',
+                top: `-${pageScrollY}px`,
+                left: '0',
+                right: '0',
+                overflow: 'hidden'
+            });
+
+            dialog.showModal();
+            buildGallery();
+
+            document.getElementById('bonitaClose').focus();
+        });
+
+    /* CERRAR BONITA */
+    document.getElementById('bonitaClose')
+        .addEventListener('click', () => {
+            dialog.close();
+        });
+
+    dialog.addEventListener('close', () => {
+        releaseOtherVideos();
+        resetYouTube();
+
+        if (bodyStyle === null) {
+            document.body.removeAttribute('style');
+        } else {
+            document.body.setAttribute('style', bodyStyle);
+        }
+
+        window.scrollTo(0, pageScrollY);
+
+        returnFocus?.focus({
+            preventScroll: true
+        });
+
+        if (resumeVideo) {
+            document.querySelector('#videoContainer video')
+                ?.play()
+                .catch(() => {});
+        }
+    });
+
+    /* PAUSAR AL CAMBIAR DE PESTAÑA O BLOQUEAR EL DISPOSITIVO */
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden || !dialog.open) return;
+
+        localPlayers.forEach(record => {
+            record.video?.pause();
+        });
+
+        resetYouTube();
+    });
+
+    /* VIDEO FINAL DE YOUTUBE, OPCIONAL */
+    if (videoBox && play) {
+        const hasYouTube =
+            /^[A-Za-z0-9_-]{11}$/.test(bonitaConfig.youtubeId);
+
+        play.disabled = !hasYouTube;
+        play.textContent =
+            hasYouTube ? '▶ Ver tu video' : 'Video próximamente';
+
+        play.addEventListener('click', () => {
+            if (play.disabled) return;
+
+            releaseOtherVideos();
+
+            const iframe = document.createElement('iframe');
+
+            iframe.src =
+                'https://www.youtube.com/embed/' +
+                bonitaConfig.youtubeId +
+                '?autoplay=1&start=0&playsinline=1';
+
+            iframe.title = 'Un video para Anni';
+            iframe.allow =
+                'autoplay; encrypted-media; picture-in-picture; fullscreen';
+
+            iframe.allowFullscreen = true;
+            iframe.referrerPolicy =
+                'strict-origin-when-cross-origin';
+
+            videoBox.replaceChildren(iframe);
+        });
+    }
+})();
+</script>
+
 </body>
 </html>
