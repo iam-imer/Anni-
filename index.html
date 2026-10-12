@@ -5009,6 +5009,14 @@
                 const button = document.createElement('button');
 
                 button.type = 'button';
+
+                button.dataset.cinemaSilent =
+    /(?:^|\/)(bonita1000|sunshine)\.mp4(?:[?#]|$)/i.test(item.src)
+        ? 'true'
+        : 'false';
+
+
+
                 button.className = 'bonita-local-play';
                 button.textContent = '▶ Reproducir video';
 
@@ -5033,10 +5041,18 @@
 
                     const video = document.createElement('video');
 
-                    video.controls = true;
-                    video.playsInline = true;
-                    video.preload = 'none';
 
+                    video.controls = true;
+video.playsInline = true;
+video.preload = 'none';
+
+if (button.dataset.cinemaSilent === 'true') {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+}
+
+                  
                     video.setAttribute('playsinline', '');
                     video.setAttribute('aria-label', item.alt);
 
@@ -5513,18 +5529,20 @@
             : 'Pausar música';
     }
 
+
     function otherMedia() {
-        const youtubeOpen = Boolean(
-            dialog.querySelector('#bonitaVideo iframe')
-        );
+    const youtubeOpen = Boolean(
+        dialog.querySelector('#bonitaVideo iframe')
+    );
 
-        const localVideoPlaying = [
-            ...dialog.querySelectorAll('.bonita-frame video')
-        ].some(video => !video.paused);
+    const videoConSonido = [
+        ...dialog.querySelectorAll('.bonita-frame video')
+    ].some(video => !video.paused && !video.muted);
 
-        return youtubeOpen || localVideoPlaying;
-    }
+    return youtubeOpen || videoConSonido;
+}
 
+    
     function startMusic() {
         if (
             !active ||
@@ -5636,23 +5654,33 @@
         updateMusic();
     });
 
-    /* PAUSAR LA MÚSICA ANTES DE ABRIR UN VIDEO */
-
-    dialog.addEventListener('click', event => {
-        if (
-            event.target.closest(
-                '.bonita-local-play, #bonitaPlay'
-            )
-        ) {
-            stopMusic();
-        }
-    }, true);
 
     dialog.addEventListener('play', event => {
-        if (event.target.tagName === 'VIDEO') {
-            stopMusic();
-        }
-    }, true);
+    const video = event.target;
+
+    if (
+        video.tagName === 'VIDEO' &&
+        !video.muted
+    ) {
+        stopMusic();
+    }
+}, true);
+
+    /* PAUSAR LA MÚSICA ANTES DE ABRIR UN VIDEO */
+
+dialog.addEventListener('click', event => {
+    const button = event.target.closest(
+        '.bonita-local-play, #bonitaPlay'
+    );
+
+    if (!button) return;
+
+    if (button.dataset.cinemaSilent === 'true') {
+        return;
+    }
+
+    stopMusic();
+}, true);
 
     /* RESTAURAR BONITA AL CERRAR */
 
