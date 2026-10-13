@@ -2542,6 +2542,7 @@
                 )
             );
             -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
         }
 
         .nav-item {
@@ -3408,6 +3409,66 @@
         transition: none;
     }
 }
+
+/* SELECTOR DE CAPÍTULOS */
+
+#cinPlayer #cinEpisodes {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px 18px;
+
+    padding: 18px 20px;
+    border-top: 1px solid #ffffff15;
+    background: #191a20;
+}
+
+#cinPlayer #cinEpisodes[hidden] {
+    display: none;
+}
+
+#cinEpisodes label {
+    color: #c9b793;
+    font-size: 12px;
+}
+
+#cinEpisodeSelect {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+
+    border: 1px solid #ffffff30;
+    border-radius: 5px;
+
+    background: #101116;
+    color: #eee9df;
+    color-scheme: dark;
+
+    font: 500 14px var(--font-apple);
+}
+
+#cinEpisodeSelect:focus-visible {
+    outline: 2px solid #c9b793;
+    outline-offset: 3px;
+}
+
+#cinEpisodeDescription {
+    grid-column: 1 / -1;
+    color: #aaa7b1;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#cinEpisodeDescription:empty {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #cinPlayer #cinEpisodes {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
     </style>
 </head>
 <body>
@@ -3852,6 +3913,29 @@
                             <strong>Lilo &amp; Stitch</strong>
                             <small>Serie · Español México</small>
                         </button>
+
+
+                        <!--RBD-->
+
+                        <button
+                            class="cin-card"
+                            data-category="series"
+                            onclick="openCinemaDetail('rbd')"
+                        >
+                            <span class="cin-poster">
+                                <img
+                                    src="posters/f3932b9cad34f5561280de0804a17d12.jpg"
+                                    width="1200"
+                                    height="1800"
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </span>
+
+                            <strong>Rebelde</strong>
+                            <small>Serie · Español México</small>
+                        </button>
                     </div>
 
                     <p
@@ -4269,7 +4353,34 @@
                     'Lilo & Stitch · Versión Español México.',
                 mediaUrl:
                     'https://www.youtube.com/embed/YfYGtFmMyGI?si=o2bYPsktg-azfMdT'
-            }
+            },
+            
+            rbd: {
+                title: 'Rebelde',
+                category: 'Serie',
+                image: 'posters/f3932b9cad34f5561280de0804a17d12.jpg',
+                summary: 'Selecciona un capítulo para reproducir.',
+                description: 'Una colección de capítulos para ti.',
+
+                  episodes: [
+                    {
+                      title: 'Capítulo 99',
+                      description: 'Mia descubre que Miguel tiene su diario',
+                      mediaUrl:
+                         'https://www.youtube.com/embed/3-FdUxUy-uM?si=Vm378KU_2yVnHGmX'
+                    },
+                    
+                    {
+                      title: 'Capítulo 100',
+                      description: 'Giovanni le quiere dar un ósculo a Mia',
+                      mediaUrl:
+                         'https://www.youtube.com/embed/eCxRoljTWeg?si=g9GijYMhWIZXBreb'
+                    }       
+                    
+                            ]
+            },
+           
+            
         };
 
         let libraryReturnFocus;
@@ -4384,8 +4495,10 @@
 
             const play = document.getElementById('cinDetailPlay');
 
-            play.hidden = !item.mediaUrl;
-            play.onclick = () => playCinema(id);
+            play.hidden =
+                !item.mediaUrl &&
+                !item.episodes?.length;
+                play.onclick = () => playCinema(id);
 
             document.getElementById('cinCatalog').hidden = true;
             document.getElementById('cinDetail').hidden = false;
@@ -4409,39 +4522,110 @@
         }
 
         function playCinema(id) {
-            const item = cinemaItems[id];
+    const item = cinemaItems[id];
 
-            if (!item.mediaUrl) return;
+    if (!item) return;
 
-            document.getElementById('cinPlayerTitle').textContent =
-                item.title;
+    const episodes = item.episodes?.length
+        ? item.episodes
+        : [
+            {
+                title: item.title,
+                description: item.description,
+                mediaUrl: item.mediaUrl
+            }
+        ];
 
-            const iframe = document.createElement('iframe');
-            const url = new URL(item.mediaUrl);
+    if (!episodes[0]?.mediaUrl) return;
 
-            url.searchParams.set('autoplay', '1');
-            url.searchParams.set('start', '0');
-            url.searchParams.set('playsinline', '1');
+    const media = document.getElementById('cinMedia');
+    const playerTitle = document.getElementById('cinPlayerTitle');
 
-            iframe.src = url.href;
-            iframe.title =
-                item.title + ' — reproductor de YouTube';
+    let episodePanel = document.getElementById('cinEpisodes');
 
-            iframe.allow =
-                'accelerometer; autoplay; clipboard-write; ' +
-                'encrypted-media; gyroscope; picture-in-picture; web-share';
+    if (!episodePanel) {
+        episodePanel = document.createElement('div');
+        episodePanel.id = 'cinEpisodes';
 
-            iframe.referrerPolicy =
-                'strict-origin-when-cross-origin';
+        media.before(episodePanel);
+    }
 
-            iframe.allowFullscreen = true;
+    episodePanel.replaceChildren();
+    episodePanel.hidden = !item.episodes?.length;
 
-            document
-                .getElementById('cinMedia')
-                .replaceChildren(iframe);
+    function loadEpisode(index) {
+        const episode = episodes[index];
 
-            cinemaPlayer.showModal();
+        if (!episode?.mediaUrl) return;
+
+        playerTitle.textContent = item.episodes?.length
+            ? `${item.title} · ${episode.title}`
+            : item.title;
+
+        const iframe = document.createElement('iframe');
+        const url = new URL(episode.mediaUrl);
+
+        url.searchParams.set('autoplay', '1');
+        url.searchParams.set('start', '0');
+        url.searchParams.set('playsinline', '1');
+
+        iframe.src = url.href;
+        iframe.title = `${item.title} — ${episode.title}`;
+
+        iframe.allow =
+            'accelerometer; autoplay; clipboard-write; ' +
+            'encrypted-media; gyroscope; picture-in-picture; web-share';
+
+        iframe.referrerPolicy =
+            'strict-origin-when-cross-origin';
+
+        iframe.allowFullscreen = true;
+
+        media.replaceChildren(iframe);
+
+        const description = document.getElementById(
+            'cinEpisodeDescription'
+        );
+
+        if (description) {
+            description.textContent =
+                episode.description || '';
         }
+    }
+
+    if (item.episodes?.length) {
+        const label = document.createElement('label');
+        label.htmlFor = 'cinEpisodeSelect';
+        label.textContent = 'Seleccionar capítulo';
+
+        const select = document.createElement('select');
+        select.id = 'cinEpisodeSelect';
+
+        episodes.forEach((episode, index) => {
+            const option = document.createElement('option');
+
+            option.value = String(index);
+            option.textContent = episode.title;
+
+            select.append(option);
+        });
+
+        const description = document.createElement('p');
+        description.id = 'cinEpisodeDescription';
+
+        select.addEventListener('change', () => {
+            loadEpisode(Number(select.value));
+        });
+
+        episodePanel.append(label, select, description);
+    }
+
+    loadEpisode(0);
+
+    if (!cinemaPlayer.open) {
+        cinemaPlayer.showModal();
+    }
+}
 
         function closeModal() {
             document.getElementById('cinMedia').replaceChildren();
